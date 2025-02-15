@@ -1,8 +1,8 @@
 # SIS_huytienlam
 
-Sinh viên: LÂM TIẾN HUY
-MSSV: 22127151
-Môn: THIẾT KẾ PHẦN MỀM - 22KTPM3
+- Sinh viên: LÂM TIẾN HUY
+- MSSV: 22127151
+- Môn: THIẾT KẾ PHẦN MỀM - 22KTPM3
 
 # QUẢN LÝ SINH VIÊN
 
