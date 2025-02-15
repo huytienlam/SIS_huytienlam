@@ -31,7 +31,7 @@ Cách 2: Phần mềm hoặc IDE
 - Thêm các file .h, .cpp và .txt vào cùng project để compile ngôn ngữ C++.
 
 
-3. CHẠY CHƯƠNG TRÌNH
+## 3. CHẠY CHƯƠNG TRÌNH
 Sau khi biên dịch thành công, chạy chương trình bằng lệnh: ./tenchuongtrinh.exe
 
 
