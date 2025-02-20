@@ -1,0 +1,59 @@
+20210A11
+Nguyen Van K
+20/11/2003
+Nam
+Khoa Công nghệ thông tin
+K19
+KTPM
+808 BCD Street
+nguyenvank@example
+0981234567
+Đang học
+
+20210012
+Le Thi L
+05/12/2003
+Nữ
+Khoa Tiếng Anh thương mại
+K19
+Ngôn ngữ Anh
+909 EFG Street
+lethil@example.com
+0112233445
+Đã tốt nghiệp
+
+20210013
+Bui Minh M
+14/01/2003
+Nam
+Khoa Luật
+K20
+Luật Quốc tế
+101 HIJ Street
+buiminhm@example.com
+0939876543
+Sinh viên bị đuổi
+
+20210014
+Pham Van N
+29/02/2003
+Nam
+Khoa Tiếng Nhật
+K21
+Ngôn ngữ Nhật
+202 KLM Street
+phamvann@example.com
+077123456
+Đã thôi học
+
+20210015
+Tran Thi O
+07/07/2003
+Nữ
+Khoa Tiếng Pháp
+K22
+Ngôn ngữ Pháp
+303 NOP Street
+tranthio@example.org
+0789123456
+Đang nợ môn
