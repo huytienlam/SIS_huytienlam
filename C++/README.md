@@ -31,7 +31,7 @@ Cách 2: Phần mềm hoặc IDE
 - Thêm các file .h, .cpp và .txt vào cùng project để compile ngôn ngữ C++.
 
 
-3. CHẠY CHƯƠNG TRÌNH
+## 3. CHẠY CHƯƠNG TRÌNH
 Sau khi biên dịch thành công, chạy chương trình bằng lệnh: ./tenchuongtrinh.exe
 
 
@@ -97,4 +97,4 @@ LỰA CHỌN 0: THOÁT
 Chương trình sẽ lưu dữ liệu về lại file mặc định ban đầu, vẫn là "dssv.txt" và hoàn thành.
 Vì thế, khi thoát và mở lại chương trình thì dữ liệu sẽ được đồng nhất.
 
-ENJOY!
+### ENJOY!
