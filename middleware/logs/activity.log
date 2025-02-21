@@ -15,3 +15,12 @@
 [2025-02-21T16:38:42.477Z] Xóa sinh viên: {"id":"22127100","name":"Lâm Tiến Huy"}
 [2025-02-21T16:38:43.866Z] EXPORT_CSV: {"exportedCount":6}
 [2025-02-21T16:38:44.423Z] EXPORT_JSON: {"exportedCount":6}
+[2025-02-21T17:31:11.478Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-21T17:31:11.789Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-21T17:31:11.948Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-21T17:31:12.092Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-21T17:31:15.493Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-21T17:31:15.552Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-21T17:31:19.224Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-21T17:31:21.412Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-21T17:36:23.799Z] Cập nhật sinh viên: {"id":"22127153","oldData":{"id":"22127153","name":"Lâm Tiến Huy","dob":"2002-02-14","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"huytienlam@gmail.com","phone":"0739572452","status":"Đang học"},"newData":{"id":"22127153","name":"Lâm Tiến Huy","dob":"2002-02-14","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"huytienlam@gmail.com","phone":"0739572452","status":"Đang học"}}
