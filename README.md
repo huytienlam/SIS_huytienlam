@@ -82,7 +82,7 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 - Có thể bỏ trống 1 trong 2 ô còn lại.
 
 ### CẬP NHẬT SINH VIÊN
-![Update Student](/screenshots/Change%20Options.png)
+![Update Student](/screenshots/Update%20Students.png)
 - Khi chọn nút Sửa kế bên sinh viên đó trên trang *HOME* thì sẽ hiện ra trang này.
 - Thay đổi Địa chỉ, Email, Số điện thoại, hoặc Tình trạng sinh viên nếu cần và chọn Cập nhật.
 - Dựa theo quy chuẩn, nếu sai sẽ ngăn việc submit form, nếu đúng thì sinh viên sẽ được thay đổi.
