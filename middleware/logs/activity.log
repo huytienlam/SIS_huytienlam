@@ -1,0 +1,17 @@
+[2025-02-21T16:14:35.140Z] Xóa sinh viên: {"id":"22127333","name":"Haha Haha"}
+[2025-02-21T16:14:37.432Z] Xóa sinh viên: {"id":"22127100","name":"Lâm Tiến Huy"}
+[2025-02-21T16:17:08.328Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-21T16:17:12.001Z] Tìm kiếm sinh viên: {"query":"haha","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-21T16:17:13.698Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-02-21T16:18:24.958Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp","Lala"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"]}
+[2025-02-21T16:38:24.328Z] IMPORT_CSV: {"importedCount":5}
+[2025-02-21T16:38:26.706Z] Xóa sinh viên: {"id":"22127159","name":"Hà Thị Thu"}
+[2025-02-21T16:38:27.862Z] Xóa sinh viên: {"id":"22127160","name":"Missing Email"}
+[2025-02-21T16:38:33.940Z] IMPORT_JSON: {"importedCount":2}
+[2025-02-21T16:38:33.974Z] IMPORT_JSON: {"importedCount":0}
+[2025-02-21T16:38:36.118Z] Xóa sinh viên: {"id":"22127160","name":"Missing Email"}
+[2025-02-21T16:38:40.467Z] Xóa sinh viên: {"id":"22127159","name":"Hà Thị Thu"}
+[2025-02-21T16:38:41.911Z] Xóa sinh viên: {"id":"22127147","name":"Lâm Tiến Huy"}
+[2025-02-21T16:38:42.477Z] Xóa sinh viên: {"id":"22127100","name":"Lâm Tiến Huy"}
+[2025-02-21T16:38:43.866Z] EXPORT_CSV: {"exportedCount":6}
+[2025-02-21T16:38:44.423Z] EXPORT_JSON: {"exportedCount":6}

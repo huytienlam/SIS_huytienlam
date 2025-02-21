@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const fs = require("fs");
+const logActivity = require("../middleware/logger"); // Import middleware logger
 
 const dataFile = "./data/students.json";
 const optionsFile = "./data/options.json";
@@ -71,6 +72,7 @@ router.post("/add", (req, res) => {
 
     students.push(newStudent);
     saveStudents(students);
+    logActivity("Thêm sinh viên", newStudent);
     res.redirect("/");
 });
 
@@ -82,17 +84,19 @@ router.get("/check-id", (req, res) => {
 });
 
 // POST: Xóa sinh viên
+// Xóa sinh viên
 router.post("/delete/:id", (req, res) => {
     let students = getStudents();
-    const studentId = req.params.id.trim(); // Xóa khoảng trắng thừa
+    const studentId = req.params.id.trim();
+    const studentToDelete = students.find(student => student.id === studentId);
 
-    const updatedStudents = students.filter(student => student.id !== studentId);
-    
-    if (students.length === updatedStudents.length) {
+    if (!studentToDelete) {
         return res.status(404).send("Không tìm thấy sinh viên để xóa.");
     }
 
-    saveStudents(updatedStudents);
+    students = students.filter(student => student.id !== studentId);
+    saveStudents(students);
+    logActivity("Xóa sinh viên", { id: studentId, name: studentToDelete.name });
     res.redirect("/");
 });
 
@@ -116,6 +120,7 @@ router.get("/update/:id", (req, res) => {
       return res.status(404).send("Không tìm thấy sinh viên để cập nhật.");
     }
     const student = students[index];
+    const oldData = { ...student };
   
     // Nếu trường nhập không trống, cập nhật giá trị mới. Nếu để trống, giữ nguyên.
     if (req.body.address && req.body.address.trim() !== "") {
@@ -142,6 +147,7 @@ router.get("/update/:id", (req, res) => {
     }
   
     saveStudents(students);
+    logActivity("Cập nhật sinh viên", { id: student.id, oldData, newData: student });
     res.redirect("/");
   });
 
@@ -164,8 +170,9 @@ router.get("/search", (req, res) => {
   if (facultyFilter) {
       filteredStudents = filteredStudents.filter(student => student.faculty === facultyFilter);
   }
-
+  
   const options = getOptions();
+  logActivity("Tìm kiếm sinh viên", { query, facultyFilter });
   res.render("home", { 
       students: filteredStudents, 
       faculties: options.faculties, 
@@ -196,6 +203,7 @@ router.post("/update-options", (req, res) => {
         const { faculties, programs, statuses } = req.body;
         const newOptions = { faculties, programs, statuses };
         fs.writeFileSync(optionsFile, JSON.stringify(newOptions, null, 2), "utf-8");
+        logActivity("Cập nhật danh sách lựa chọn", newOptions);
         res.json({ success: true, message: "Cập nhật danh sách thành công!" });
     } catch (error) {
         console.error("Error updating options.json:", error);
@@ -210,110 +218,124 @@ router.get("/manage-options", (req, res) => {
 
 // API Import từ CSV
 router.post("/import-csv", upload.single("csvFile"), (req, res) => {
-  if (!req.file) {
-      return res.status(400).send("Vui lòng tải lên một file CSV.");
-  }
+    if (!req.file) {
+        logActivity("IMPORT_CSV_ERROR", { error: "Không có file tải lên" });
+        return res.status(400).send("Vui lòng tải lên một file CSV.");
+    }
+  
+    const students = getStudents();
+    const results = [];
+    const filePath = req.file.path;
+  
+    fs.createReadStream(filePath)
+        .pipe(csvParser({ separator: "," }))
+        .on("data", (row) => {
+            if (row.id && row.name) {
+                const newStudent = {
+                    id: row.id.trim(),
+                    name: row.name.trim(),
+                    dob: row.dob.trim(),
+                    gender: row.gender.trim(),
+                    faculty: row.faculty.trim(),
+                    course: row.course.trim(),
+                    program: row.program.trim(),
+                    address: row.address.trim(),
+                    email: row.email.trim(),
+                    phone: row.phone.trim(),
+                    status: row.status.trim()
+                };
+  
+                if (!students.some(student => student.id === newStudent.id)) {
+                    results.push(newStudent);
+                }
+            }
+        })
+        .on("end", () => {
+            students.push(...results);
+            saveStudents(students);
+            fs.unlinkSync(filePath); // Xóa file tạm
+            logActivity("IMPORT_CSV", { importedCount: results.length });
+            res.redirect("/");
+        })
+        .on("error", (error) => {
+            console.error("Lỗi đọc CSV:", error);
+            logActivity("IMPORT_CSV_ERROR", { error: error.toString() });
+            res.status(500).send("Lỗi xử lý file CSV.");
+        });
+  });  
 
-  const students = getStudents();
-  const results = [];
-  const filePath = req.file.path;
-
-  fs.createReadStream(filePath)
-      .pipe(csvParser({ separator: "," }))
-      .on("data", (row) => {
-          if (row.id && row.name) {
-              const newStudent = {
-                  id: row.id.trim(),
-                  name: row.name.trim(),
-                  dob: row.dob.trim(),
-                  gender: row.gender.trim(),
-                  faculty: row.faculty.trim(),
-                  course: row.course.trim(),
-                  program: row.program.trim(),
-                  address: row.address.trim(),
-                  email: row.email.trim(),
-                  phone: row.phone.trim(),
-                  status: row.status.trim()
-              };
-
-              if (!students.some(student => student.id === newStudent.id)) {
-                  results.push(newStudent);
-              }
-          }
-      })
-      .on("end", () => {
-          students.push(...results);
-          saveStudents(students);
-          fs.unlinkSync(filePath); // Xóa file tạm
-          res.redirect("/");
-      })
-      .on("error", (error) => {
-          console.error("Lỗi đọc CSV:", error);
-          res.status(500).send("Lỗi xử lý file CSV.");
-      });
-});
-
+// API Import từ JSON
 router.post("/import-json", upload.single("jsonFile"), (req, res) => {
-  if (!req.file) {
-      return res.status(400).send("Vui lòng tải lên một file JSON.");
-  }
+    if (!req.file) {
+        logActivity("IMPORT_JSON_ERROR", { error: "Không có file tải lên" });
+        return res.status(400).send("Vui lòng tải lên một file JSON.");
+    }
+  
+    const students = getStudents();
+    const filePath = req.file.path;
+  
+    fs.readFile(filePath, "utf8", (err, data) => {
+        if (err) {
+            console.error("Lỗi đọc file JSON:", err);
+            logActivity("IMPORT_JSON_ERROR", { error: err.toString() });
+            return res.status(500).send("Lỗi xử lý file.");
+        }
+  
+        try {
+            const newStudents = JSON.parse(data);
+            let importedCount = 0;
+            newStudents.forEach(student => {
+                if (student.id && student.name) {
+                    if (!students.some(s => s.id === student.id)) {
+                        students.push(student);
+                        importedCount++;
+                    }
+                }
+            });
+  
+            saveStudents(students);
+            fs.unlinkSync(filePath); // Xóa file tạm
+            logActivity("IMPORT_JSON", { importedCount });
+            res.redirect("/");
+        } catch (parseError) {
+            console.error("Lỗi phân tích JSON:", parseError);
+            logActivity("IMPORT_JSON_ERROR", { error: parseError.toString() });
+            res.status(400).send("File JSON không hợp lệ.");
+        }
+    });
+  });  
 
-  const students = getStudents();
-  const filePath = req.file.path;
-
-  fs.readFile(filePath, "utf8", (err, data) => {
-      if (err) {
-          console.error("Lỗi đọc file JSON:", err);
-          return res.status(500).send("Lỗi xử lý file.");
-      }
-
-      try {
-          const newStudents = JSON.parse(data);
-
-          // Kiểm tra từng object trong JSON có đúng format không
-          newStudents.forEach(student => {
-              if (student.id && student.name) {
-                  if (!students.some(s => s.id === student.id)) {
-                      students.push(student);
-                  }
-              }
-          });
-
-          saveStudents(students);
-          fs.unlinkSync(filePath); // Xóa file tạm
-          res.redirect("/");
-      } catch (parseError) {
-          console.error("Lỗi phân tích JSON:", parseError);
-          res.status(400).send("File JSON không hợp lệ.");
-      }
-  });
-});
-
+// Export CSV
 router.get("/export-csv", (req, res) => {
-  const students = getStudents();
-  if (students.length === 0) {
-      return res.status(404).send("Không có dữ liệu để xuất.");
-  }
+    const students = getStudents();
+    if (students.length === 0) {
+        logActivity("EXPORT_CSV", { error: "Không có dữ liệu để xuất" });
+        return res.status(404).send("Không có dữ liệu để xuất.");
+    }
+  
+    let csvContent = "id,name,dob,gender,faculty,course,program,address,email,phone,status\n";
+    students.forEach(student => {
+        csvContent += `${student.id},${student.name},${student.dob},${student.gender},${student.faculty},${student.course},${student.program},${student.address},${student.email},${student.phone},${student.status}\n`;
+    });
+  
+    // Thêm UTF-8 BOM để Excel đọc được tiếng Việt
+    const csvBuffer = Buffer.from("\uFEFF" + csvContent, "utf-8");
+  
+    logActivity("EXPORT_CSV", { exportedCount: students.length });
+    res.setHeader("Content-Disposition", "attachment; filename=students.csv");
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.send(csvBuffer);
+  });  
 
-  let csvContent = "id,name,dob,gender,faculty,course,program,address,email,phone,status\n";
-  students.forEach(student => {
-      csvContent += `${student.id},${student.name},${student.dob},${student.gender},${student.faculty},${student.course},${student.program},${student.address},${student.email},${student.phone},${student.status}\n`;
-  });
-
-  // Thêm UTF-8 BOM để Excel đọc được tiếng Việt
-  const csvBuffer = Buffer.from("\uFEFF" + csvContent, "utf-8");
-
-  res.setHeader("Content-Disposition", "attachment; filename=students.csv");
-  res.setHeader("Content-Type", "text/csv; charset=utf-8");
-  res.send(csvBuffer);
-});
-
+// Export JSON
 router.get("/export-json", (req, res) => {
-  const students = getStudents();
-  res.setHeader("Content-Type", "application/json");
-  res.setHeader("Content-Disposition", "attachment; filename=students.json");
-  res.json(students);
-});
+    const students = getStudents();
+    logActivity("EXPORT_JSON", { exportedCount: students.length });
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Content-Disposition", "attachment; filename=students.json");
+    res.json(students);
+  });
+  
 
 router.get("/import-export", (req, res) => {
   res.render("import-export");

@@ -2,9 +2,13 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-
+const path = require('path');
 const app = express();
 const PORT = 3000;
+
+// Đọc version.json
+const versionPath = path.join(__dirname, 'data', 'version.json');
+const versionData = JSON.parse(fs.readFileSync(versionPath, 'utf8'));
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,6 +30,13 @@ app.engine("hbs", exphbs.engine({
 }));
 
 app.set("view engine", "hbs");
+
+// Middleware để truyền dữ liệu version vào tất cả các view
+app.use((req, res, next) => {
+    res.locals.version = versionData.version;
+    res.locals.buildDate = versionData.buildDate;
+    next();
+});
 
 // Load student routes
 const studentRoutes = require("./routes/students");
