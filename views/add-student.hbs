@@ -1,0 +1,211 @@
+<h2>Add New Student</h2>
+<form id="studentForm" method="POST" action="/add">
+    <label>Student ID (MSSV): 
+        <input type="text" id="id" name="id" required>
+        <small class="error"></small>
+    </label><br>
+
+    <label>Name: 
+        <input type="text" id="name" name="name" required>
+        <small class="error"></small>
+    </label><br>
+
+    <label>DOB: 
+        <input type="date" id="dob" name="dob" required>
+        <small class="error"></small>
+    </label><br>
+
+    <label>Gender: 
+        <select name="gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+    </label><br>
+
+    <label>Faculty (Khoa): 
+    <select id="faculty" name="faculty"></select>
+</label><br>
+
+<label>Program (Chương trình): 
+    <select id="program" name="program"></select>
+</label><br>
+
+<label>Status: 
+    <select id="status" name="status"></select>
+</label><br>
+
+<script>
+async function loadOptions() {
+    try {
+        let response = await fetch("/options");
+        let data = await response.json();
+
+        function populateSelect(id, items) {
+            let select = document.getElementById(id);
+            select.innerHTML = items.map(item => `<option>${item}</option>`).join("");
+        }
+
+        populateSelect("faculty", data.faculties);
+        populateSelect("program", data.programs);
+        populateSelect("status", data.statuses);
+    } catch (error) {
+        console.error("Lỗi tải danh sách:", error);
+    }
+}
+
+// Gọi hàm khi trang tải
+document.addEventListener("DOMContentLoaded", loadOptions);
+</script>
+
+
+    <label>Address: 
+        <input type="text" id="address" name="address" required>
+    </label><br>
+
+    <label>Email: 
+        <input type="email" id="email" name="email" required>
+        <small class="error"></small>
+    </label><br>
+
+    <label>Phone: 
+        <input type="text" id="phone" name="phone" required>
+        <small class="error"></small>
+    </label><br>
+
+    <label>Status: 
+        <select name="status">
+            <option>Đang học</option>
+            <option>Đã tốt nghiệp</option>
+            <option>Đã thôi học</option>
+            <option>Tạm dừng học</option>
+        </select>
+    </label><br>
+    
+    <button type="submit">Add Student</button>
+</form>
+
+<!-- Modal hiển thị lỗi -->
+<div id="errorModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5);">
+  <div class="modal-content" style="background:#fff; padding:20px; margin:15% auto; width:300px; text-align:center; border-radius: 5px;">
+    <p id="modalMessage"></p>
+    <button id="modalClose">Close</button>
+  </div>
+</div>
+
+<script>
+function showModal(message) {
+    let modal = document.getElementById("errorModal");
+    let modalMessage = document.getElementById("modalMessage");
+    modalMessage.textContent = message;
+    modal.style.display = "block";
+}
+
+// Xử lý nút Close dựa trên nội dung modal
+document.getElementById("modalClose").addEventListener("click", function() {
+    let modal = document.getElementById("errorModal");
+    let msg = document.getElementById("modalMessage").textContent;
+    modal.style.display = "none";
+    // Nếu thông báo thành công, chuyển hướng về /students
+    if (msg === "Thêm sinh viên thành công!") {
+        window.location.href = "/";
+    }
+});
+
+// Phần xử lý form vẫn giữ nguyên như trước (ví dụ gửi bằng fetch)
+document.getElementById("studentForm").addEventListener("submit", async function(event) {
+    event.preventDefault(); // Chặn submit mặc định
+    let valid = true;
+    let errors = document.querySelectorAll(".error");
+    errors.forEach(error => error.textContent = ""); // Reset lỗi cũ
+
+    let id = document.getElementById("id").value.trim();
+    let name = document.getElementById("name").value.trim();
+    let dob = document.getElementById("dob").value;
+    let course = document.getElementById("course").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+
+    let currentYear = new Date().getFullYear();
+    let birthYear = new Date(dob).getFullYear();
+
+    // Các kiểm tra tĩnh như trước...
+    if (!/^\d{8}$/.test(id)) {
+        document.querySelector("#id + .error").textContent = "MSSV phải có 8 số.";
+        valid = false;
+    } else if (id.substring(0, 2) !== course.substring(2, 4)) {
+        document.querySelector("#id + .error").textContent = "Hai số đầu của MSSV phải khớp với năm khóa học.";
+        valid = false;
+    }
+
+    if (!/^[A-ZÀ-Ỹ][a-zà-ỹ]+(?: [A-ZÀ-Ỹ][a-zà-ỹ]+)+$/.test(name)) {
+        document.querySelector("#name + .error").textContent = "Tên phải có ít nhất 2 từ, không chứa số, và mỗi từ phải viết hoa chữ cái đầu.";
+        valid = false;
+    }
+
+    if (currentYear - birthYear < 16) {
+        document.querySelector("#dob + .error").textContent = "Sinh viên phải ít nhất 16 tuổi.";
+        valid = false;
+    }
+
+    if (parseInt(course) > currentYear) {
+        document.querySelector("#course + .error").textContent = "Khóa học không thể lớn hơn năm hiện tại.";
+        valid = false;
+    }
+
+    if (parseInt(course) - birthYear < 17) {
+        document.querySelector("#dob + .error").textContent = "Sinh viên phải ít nhất 17 tuổi tính từ thời điểm khóa đó.";
+        valid = false;
+    }
+
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+        document.querySelector("#email + .error").textContent = "Email không hợp lệ.";
+        valid = false;
+    }
+
+    if (!/^(03|05|07|08|09)\d{8}$/.test(phone)) {
+        document.querySelector("#phone + .error").textContent = "Số điện thoại không hợp lệ.";
+        valid = false;
+    }
+
+    // Kiểm tra MSSV tồn tại qua AJAX
+    if (valid) {
+        try {
+            let response = await fetch("/check-id?id=" + encodeURIComponent(id));
+            let data = await response.json();
+            if (data.exists) {
+                showModal("MSSV đã tồn tại! Hãy nhập một MSSV khác.");
+                valid = false;
+            }
+        } catch (error) {
+            console.error("Lỗi kiểm tra MSSV:", error);
+            showModal("Lỗi kiểm tra MSSV.");
+            valid = false;
+        }
+    }
+
+    // Nếu hợp lệ, gửi form bằng fetch dưới dạng URL-encoded
+    if (valid) {
+        let formData = new FormData(this);
+        let urlEncodedData = new URLSearchParams(formData);
+        try {
+            let submitResponse = await fetch("/add", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: urlEncodedData.toString()
+            });
+            if (!submitResponse.ok) {
+                let errorText = await submitResponse.text();
+                showModal(errorText);
+            } else {
+                showModal("Thêm sinh viên thành công!");
+                this.reset();
+            }
+        } catch (error) {
+            console.error("Lỗi submit:", error);
+            showModal("Có lỗi xảy ra khi gửi dữ liệu.");
+        }
+    }
+});
+</script>

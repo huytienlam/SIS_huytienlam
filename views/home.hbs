@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sinh viên</title>
+</head>
+<body>
+    <h1>Danh sách sinh viên</h1>
+    <a href="/add">Thêm sinh viên</a>
+    <a href="/import-export">Import/Export</a>
+
+    <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Tìm theo MSSV hoặc Tên">
+        <select name="faculty">
+            <option value="">-- Chọn Khoa --</option>
+            {{#each faculties}}
+                <option value="{{this}}" {{#if (eq this ../selectedFaculty)}}selected{{/if}}>{{this}}</option>
+            {{/each}}
+        </select>
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>MSSV</th>
+            <th>Họ tên</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>Khoa</th>
+            <th>Khóa</th>
+            <th>Chương trình</th>
+            <th>Email</th>
+            <th>Điện thoại</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+        {{#each students}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{dob}}</td>
+            <td>{{gender}}</td>
+            <td>{{faculty}}</td>
+            <td>{{course}}</td>
+            <td>{{program}}</td>
+            <td>{{email}}</td>
+            <td>{{phone}}</td>
+            <td>{{status}}</td>
+            <td>
+                <a href="/update/{{id}}">Sửa</a> |
+                <form action="/delete/{{id}}" method="post" style="display:inline;">
+                    <button type="submit">Xóa</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</body>
+</html>

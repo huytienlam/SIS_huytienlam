@@ -1,0 +1,74 @@
+<h2>Quản lý Danh sách Lựa chọn</h2>
+
+<h3>Faculties (Khoa)</h3>
+<ul id="facultyList"></ul>
+<button onclick="addItem('faculty')">Thêm Khoa</button>
+
+<h3>Programs (Chương trình)</h3>
+<ul id="programList"></ul>
+<button onclick="addItem('program')">Thêm Chương trình</button>
+
+<h3>Statuses (Trạng thái)</h3>
+<ul id="statusList"></ul>
+<button onclick="addItem('status')">Thêm Trạng thái</button>
+
+<button onclick="saveChanges()">Lưu Thay Đổi</button>
+
+<script>
+async function loadOptions() {
+    let response = await fetch("/options");
+    let data = await response.json();
+
+    function renderList(id, items) {
+        let list = document.getElementById(id + "List");
+        list.innerHTML = items.map((item, index) => 
+            `<li>
+                <input type="text" value="${item}" id="${id}-${index}">
+                <button onclick="removeItem('${id}', ${index})">Xóa</button>
+            </li>`).join("");
+    }
+
+    renderList("faculty", data.faculties);
+    renderList("program", data.programs);
+    renderList("status", data.statuses);
+}
+
+function addItem(category) {
+    let list = document.getElementById(category + "List");
+    let index = list.children.length;
+    let newItem = `<li>
+        <input type="text" id="${category}-${index}">
+        <button onclick="removeItem('${category}', ${index})">Xóa</button>
+    </li>`;
+    list.insertAdjacentHTML("beforeend", newItem);
+}
+
+function removeItem(category, index) {
+    document.getElementById(category + "List").children[index].remove();
+}
+
+async function saveChanges() {
+    let getValues = (id) => [...document.querySelectorAll(`#${id}List input`)].map(input => input.value.trim()).filter(Boolean);
+
+    let data = {
+        faculties: getValues("faculty"),
+        programs: getValues("program"),
+        statuses: getValues("status"),
+    };
+
+    try {
+        let response = await fetch("/update-options", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
+        let result = await response.json();
+        if (result.success) alert("Cập nhật thành công!");
+    } catch (error) {
+        console.error("Lỗi khi cập nhật danh sách:", error);
+    }
+}
+
+// Gọi hàm khi trang tải
+document.addEventListener("DOMContentLoaded", loadOptions);
+</script>
