@@ -3,14 +3,14 @@ const router = express.Router();
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const fs = require("fs");
+const csvParser = require("csv-parser");
 const logActivity = require("../middleware/logger"); // Import middleware logger
 
+// Đường dẫn đến các file dữ liệu
 const dataFile = "./data/students.json";
 const optionsFile = "./data/options.json";
 
-const csvParser = require("csv-parser");
-
-// Đọc danh sách sinh viên từ file JSON
+// Hàm đọc danh sách sinh viên từ file JSON
 function getStudents() {
     try {
         if (!fs.existsSync(dataFile)) return []; // Nếu file chưa tồn tại, trả về mảng rỗng
@@ -22,7 +22,7 @@ function getStudents() {
     }
 }
 
-// Lưu danh sách sinh viên vào file JSON
+// Hàm lưu danh sách sinh viên vào file JSON
 function saveStudents(students) {
     try {
         fs.writeFileSync(dataFile, JSON.stringify(students, null, 2), "utf-8");
@@ -31,15 +31,27 @@ function saveStudents(students) {
     }
 }
 
+// Hàm đọc danh sách các lựa chọn từ file JSON
+function getOptions() {
+    try {
+        if (!fs.existsSync(optionsFile)) return { faculties: [], programs: [], statuses: [] };
+        const data = fs.readFileSync(optionsFile, "utf-8");
+        return JSON.parse(data);
+    } catch (error) {
+        console.error("Error reading options.json:", error);
+        return { faculties: [], programs: [], statuses: [] };
+    }
+}
+
 // GET: Hiển thị danh sách sinh viên
 router.get("/", (req, res) => {
-  const students = getStudents();
-  const options = getOptions();
-  res.render("home", { 
-      students, 
-      faculties: options.faculties, 
-      selectedFaculty: "" 
-  });
+    const students = getStudents();
+    const options = getOptions();
+    res.render("home", { 
+        students, 
+        faculties: options.faculties, 
+        selectedFaculty: "" 
+    });
 });
 
 // GET: Form thêm sinh viên
@@ -84,7 +96,6 @@ router.get("/check-id", (req, res) => {
 });
 
 // POST: Xóa sinh viên
-// Xóa sinh viên
 router.post("/delete/:id", (req, res) => {
     let students = getStudents();
     const studentId = req.params.id.trim();
@@ -105,92 +116,84 @@ router.get("/update/:id", (req, res) => {
     const students = getStudents();
     const student = students.find(s => s.id === req.params.id);
     if (!student) {
-      return res.status(404).send("Không tìm thấy sinh viên.");
+        return res.status(404).send("Không tìm thấy sinh viên.");
     }
     res.render("update-student", { student });
-  });
-  
-  // POST: Cập nhật thông tin sinh viên (theo MSSV)
-  // Chỉ cập nhật được: address, email, phone, status.
-  // Nếu trường nào để trống, giữ nguyên giá trị cũ.
-  router.post("/update/:id", (req, res) => {
+});
+
+// POST: Cập nhật thông tin sinh viên (theo MSSV)
+router.post("/update/:id", (req, res) => {
     let students = getStudents();
     const index = students.findIndex(s => s.id === req.params.id);
     if (index === -1) {
-      return res.status(404).send("Không tìm thấy sinh viên để cập nhật.");
+        return res.status(404).send("Không tìm thấy sinh viên để cập nhật.");
     }
     const student = students[index];
     const oldData = { ...student };
-  
+
     // Nếu trường nhập không trống, cập nhật giá trị mới. Nếu để trống, giữ nguyên.
     if (req.body.address && req.body.address.trim() !== "") {
-      student.address = req.body.address.trim();
+        student.address = req.body.address.trim();
     }
     if (req.body.email && req.body.email.trim() !== "") {
-      const email = req.body.email.trim();
-      // Kiểm tra định dạng email
-      if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-        return res.status(400).send("Email không hợp lệ.");
-      }
-      student.email = email;
+        const email = req.body.email.trim();
+        // Kiểm tra định dạng email
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+            return res.status(400).send("Email không hợp lệ.");
+        }
+        student.email = email;
     }
     if (req.body.phone && req.body.phone.trim() !== "") {
-      const phone = req.body.phone.trim();
-      // Kiểm tra số điện thoại: 10 số, đầu số hợp lệ của VN
-      if (!/^(03|05|07|08|09)\d{8}$/.test(phone)) {
-        return res.status(400).send("Số điện thoại không hợp lệ.");
-      }
-      student.phone = phone;
+        const phone = req.body.phone.trim();
+        // Kiểm tra số điện thoại: 10 số, đầu số hợp lệ của VN
+        if (!/^(03|05|07|08|09)\d{8}$/.test(phone)) {
+            return res.status(400).send("Số điện thoại không hợp lệ.");
+        }
+        student.phone = phone;
     }
     if (req.body.status && req.body.status.trim() !== "") {
-      student.status = req.body.status.trim();
+        student.status = req.body.status.trim();
     }
-  
+
     saveStudents(students);
     logActivity("Cập nhật sinh viên", { id: student.id, oldData, newData: student });
     res.redirect("/");
-  });
+});
 
 // GET: Tìm kiếm sinh viên theo MSSV hoặc Họ tên và Khoa
 router.get("/search", (req, res) => {
-  const query = req.query.query ? req.query.query.toLowerCase() : "";
-  const facultyFilter = req.query.faculty || "";
-  const students = getStudents();
+    const query = req.query.query ? req.query.query.toLowerCase() : "";
+    const facultyFilter = req.query.faculty || "";
 
-  // Lọc theo MSSV/Họ tên nếu có nhập
-  let filteredStudents = students;
-  if (query) {
-      filteredStudents = filteredStudents.filter(student => 
-          student.id.toLowerCase().includes(query) ||
-          student.name.toLowerCase().includes(query)
-      );
-  }
-
-  // Lọc tiếp theo Khoa nếu có chọn
-  if (facultyFilter) {
-      filteredStudents = filteredStudents.filter(student => student.faculty === facultyFilter);
-  }
-  
-  const options = getOptions();
-  logActivity("Tìm kiếm sinh viên", { query, facultyFilter });
-  res.render("home", { 
-      students: filteredStudents, 
-      faculties: options.faculties, 
-      selectedFaculty: facultyFilter 
-  });
-});
-
-// Hàm đọc danh sách từ file JSON
-function getOptions() {
-    try {
-        if (!fs.existsSync(optionsFile)) return { faculties: [], programs: [], statuses: [] };
-        const data = fs.readFileSync(optionsFile, "utf-8");
-        return JSON.parse(data);
-    } catch (error) {
-        console.error("Error reading options.json:", error);
-        return { faculties: [], programs: [], statuses: [] };
+    // Redirect to `/` if both filters are empty
+    if (!query && !facultyFilter) {
+        return res.redirect("/");
     }
-}
+
+    const students = getStudents();
+
+    // Lọc theo MSSV/Họ tên nếu có nhập
+    let filteredStudents = students;
+    if (query) {
+        filteredStudents = filteredStudents.filter(student => 
+            student.id.toLowerCase().includes(query) ||
+            student.name.toLowerCase().includes(query)
+        );
+    }
+
+    // Lọc tiếp theo Khoa nếu có chọn
+    if (facultyFilter) {
+        filteredStudents = filteredStudents.filter(student => student.faculty === facultyFilter);
+    }
+    
+    const options = getOptions();
+    logActivity("Tìm kiếm sinh viên", { query, facultyFilter });
+    res.render("home", { 
+        students: filteredStudents, 
+        faculties: options.faculties, 
+        selectedFaculty: facultyFilter 
+    });
+});
 
 // API để lấy danh sách các lựa chọn
 router.get("/options", (req, res) => {
@@ -213,7 +216,7 @@ router.post("/update-options", (req, res) => {
 
 // Tuỳ chỉnh lựa chọn
 router.get("/manage-options", (req, res) => {
-  res.render("manage-options");
+    res.render("manage-options");
 });
 
 // API Import từ CSV
@@ -262,7 +265,7 @@ router.post("/import-csv", upload.single("csvFile"), (req, res) => {
             logActivity("IMPORT_CSV_ERROR", { error: error.toString() });
             res.status(500).send("Lỗi xử lý file CSV.");
         });
-  });  
+});
 
 // API Import từ JSON
 router.post("/import-json", upload.single("jsonFile"), (req, res) => {
@@ -303,7 +306,7 @@ router.post("/import-json", upload.single("jsonFile"), (req, res) => {
             res.status(400).send("File JSON không hợp lệ.");
         }
     });
-  });  
+});
 
 // Export CSV
 router.get("/export-csv", (req, res) => {
@@ -325,7 +328,7 @@ router.get("/export-csv", (req, res) => {
     res.setHeader("Content-Disposition", "attachment; filename=students.csv");
     res.setHeader("Content-Type", "text/csv; charset=utf-8");
     res.send(csvBuffer);
-  });  
+});
 
 // Export JSON
 router.get("/export-json", (req, res) => {
@@ -334,11 +337,11 @@ router.get("/export-json", (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.setHeader("Content-Disposition", "attachment; filename=students.json");
     res.json(students);
-  });
-  
+});
 
+// GET: Trang import/export
 router.get("/import-export", (req, res) => {
-  res.render("import-export");
+    res.render("import-export");
 });
 
 module.exports = router;

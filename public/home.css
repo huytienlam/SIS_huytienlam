@@ -1,0 +1,38 @@
+.search-button {
+    font-size: 1rem;
+    border-radius: 2rem;
+    padding: 1em;
+    font-weight: 800;
+    min-width: 25%;
+}
+
+.input-default {
+    padding: 1em;
+    font-size: 1rem;
+    border: 1px solid #443d32;
+    border-radius: 3rem;
+    background-color: #edeae6;
+    color: #443d32;
+    min-width: 50%;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.update-delete-button {
+    font-size: 0.8rem;
+    padding: 0.2em 0.5em;
+    font-weight: 700;
+}
+
+.update-delete-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+}

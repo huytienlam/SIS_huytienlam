@@ -1,4 +1,191 @@
-body { font-family: Arial, sans-serif; padding: 20px; }
-table { width: 100%; border-collapse: collapse; }
-th, td { border: 1px solid black; padding: 8px; text-align: left; }
-button { background-color: red; color: white; border: none; padding: 5px; cursor: pointer; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', 'Playfair Display', 'Montserrat';
+}
+
+body {
+    background-color: #edeae6;
+}
+
+main {
+    padding-top: 9em;
+}
+
+.container {
+    margin: 0 2em;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #443d32;
+    padding: 0.5em;
+    text-align: center;
+}
+
+th {
+    background-color: #443d32;
+    color: #edeae6;
+    font-weight: 700;
+    border-color: #edeae6;
+}
+
+th:first-child {
+    border-left: 1px solid #443d32;
+}
+
+th:last-child {
+    border-right: 1px solid #443d32;
+}
+
+tr:first-child th {
+    border-top: 1px solid #443d32;
+}
+
+tr:last-child th {
+    border-bottom: 1px solid #443d32;
+}
+
+button {
+    background-color: #edeae6;
+    color: #443d32;
+    border: 1px solid #443d32;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #443d32;
+    color: #edeae6;
+}
+
+button:active {
+    background-color: #392e1d;
+    color: #edeae6;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    padding: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #edeae6;
+    z-index: 999;
+}
+
+nav {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #443d32;
+    font-weight: 500;
+    transition: font-weight 0.3s;
+}
+
+nav a:hover, nav a:active, nav a.active {
+    font-weight: 800;
+}
+
+/* Scrollbar container */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Scrollbar track (background) */
+::-webkit-scrollbar-track {
+    background: #edeae6;
+    border-radius: 10px;
+}
+
+/* Scrollbar thumb (the moving part) */
+::-webkit-scrollbar-thumb {
+    background: #908b86;
+    border-radius: 10px;
+}
+
+/* On hover, make the scrollbar more visible */
+::-webkit-scrollbar-thumb:hover {
+    background: #66625e;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-top: 2.5rem;
+    padding: 1.5em 0 2em 0;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #443d32;
+}
+
+.add-student-form {
+    font-size: 1.2rem;
+    padding: 0 2em;
+    min-width: 60%;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+}
+
+.add-student-form input, select {
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    border: 1px solid #443d32;
+    border-radius: 3rem;
+    background-color: #edeae6;
+    color: #443d32;
+    min-width: 50%;
+}
+
+form label {
+    display: block;
+    position: relative;
+}
+
+.error {
+    position: absolute;
+    left: 0;
+    bottom: -1.1rem;
+    color: #392e1d;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.add-student-form label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.add-student-form label span {
+    flex-basis: 7em;
+    text-align: left;
+}
+
+.add-student-form input, 
+.add-student-form select {
+    flex-grow: 1; /* Input sẽ mở rộng để lấp đầy không gian còn lại */
+}

@@ -24,3 +24,72 @@
 [2025-02-21T17:31:19.224Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
 [2025-02-21T17:31:21.412Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
 [2025-02-21T17:36:23.799Z] Cập nhật sinh viên: {"id":"22127153","oldData":{"id":"22127153","name":"Lâm Tiến Huy","dob":"2002-02-14","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"huytienlam@gmail.com","phone":"0739572452","status":"Đang học"},"newData":{"id":"22127153","name":"Lâm Tiến Huy","dob":"2002-02-14","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"huytienlam@gmail.com","phone":"0739572452","status":"Đang học"}}
+[2025-02-25T14:16:02.252Z] Xóa sinh viên: {"id":"22127333","name":"Haha Haha"}
+[2025-02-25T14:16:07.165Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-25T14:16:10.375Z] Tìm kiếm sinh viên: {"query":"22127154","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-25T14:16:12.849Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T14:16:13.389Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T14:16:13.532Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T14:16:13.670Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T14:16:15.638Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T14:16:15.696Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T14:16:20.061Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T14:16:32.593Z] EXPORT_CSV: {"exportedCount":5}
+[2025-02-25T14:16:32.641Z] EXPORT_CSV: {"exportedCount":5}
+[2025-02-25T14:16:33.087Z] EXPORT_JSON: {"exportedCount":5}
+[2025-02-25T14:16:33.127Z] EXPORT_JSON: {"exportedCount":5}
+[2025-02-25T14:20:05.741Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:33:35.835Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:33:41.161Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:33:54.201Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:34:01.072Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:35:34.893Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:38:25.908Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:38:41.402Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-25T16:45:53.537Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-25T16:45:55.039Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-02-25T16:45:58.184Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:45:58.766Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:45:58.892Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:46:03.468Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:46:03.957Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:46:04.115Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:46:04.243Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:46:04.558Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:46:04.710Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:46:10.218Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-02-25T16:47:49.528Z] Tìm kiếm sinh viên: {"query":"haha","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-25T16:47:52.374Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-26T14:16:30.575Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-26T14:16:32.470Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-26T14:16:34.734Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-26T14:16:35.840Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-02-26T14:16:43.082Z] Tìm kiếm sinh viên: {"query":"lâm tiến huy","facultyFilter":""}
+[2025-02-26T15:26:39.531Z] IMPORT_JSON: {"importedCount":6}
+[2025-02-26T15:26:48.184Z] Xóa sinh viên: {"id":"2212715D3","name":"Lâm Tiến Huy"}
+[2025-02-26T15:26:51.067Z] Xóa sinh viên: {"id":"22127160","name":"Missing Email"}
+[2025-02-26T15:26:53.222Z] Xóa sinh viên: {"id":"22127159","name":"Hà Thị Thu"}
+[2025-02-26T15:26:53.714Z] Xóa sinh viên: {"id":"22127147","name":"Lâm Tiến Huy"}
+[2025-02-26T15:26:54.369Z] Xóa sinh viên: {"id":"22127100","name":"Lâm Tiến Huy"}
+[2025-02-26T15:26:56.332Z] Xóa sinh viên: {"id":"22127333","name":"Haha Haha"}
+[2025-02-26T15:34:15.829Z] Xóa sinh viên: {"id":"22127153","name":"Lâm Tiến Huy"}
+[2025-02-26T15:36:37.697Z] Xóa sinh viên: {"id":"22127151","name":"Lâm Tiến Huy"}
+[2025-02-26T15:36:40.865Z] Xóa sinh viên: {"id":"22127944","name":"Haha Haha"}
+[2025-02-26T15:42:35.307Z] Xóa sinh viên: {"id":"22127157","name":"Haha Haha"}
+[2025-02-26T15:45:49.829Z] IMPORT_CSV: {"importedCount":9}
+[2025-02-26T15:45:53.238Z] Xóa sinh viên: {"id":"22127160","name":"Missing Email"}
+[2025-02-26T16:09:15.498Z] Cập nhật sinh viên: {"id":"22127154","oldData":{"id":"22127154","name":"Lâm Tiến Huy","dob":"2002-02-14","gender":"Nam","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"hello@gmail.com","phone":"0703957245","status":"Đang học"},"newData":{"id":"22127154","name":"Lâm Tiến Huy","dob":"2002-02-14","gender":"Nam","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"lthuy22@clc.fitus.edu.vn","phone":"0703957245","status":"Đang học"}}
+[2025-02-26T16:09:24.573Z] Cập nhật sinh viên: {"id":"22127151","oldData":{"id":"22127151","name":"Lâm Tiến Huy","dob":"2001-02-28","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"hello@gmail.com","phone":"0803322222","status":"Đã tốt nghiệp"},"newData":{"id":"22127151","name":"Lâm Tiến Huy","dob":"2001-02-28","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"hello@gmail.com","phone":"0827393443","status":"Đã tốt nghiệp"}}
+[2025-02-26T16:09:33.251Z] Cập nhật sinh viên: {"id":"22127154","oldData":{"id":"22127154","name":"Lâm Tiến Huy","dob":"2002-02-14","gender":"Nam","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"lthuy22@clc.fitus.edu.vn","phone":"0703957245","status":"Đang học"},"newData":{"id":"22127154","name":"Lâm Tiến Huy","dob":"2002-02-14","gender":"Nam","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"lthuy22@clc.fitus.edu.vn","phone":"0703102330","status":"Đang học"}}
+[2025-02-26T16:22:56.917Z] Xóa sinh viên: {"id":"22127159","name":"Hà Thị Thu"}
+[2025-02-26T16:22:59.670Z] Xóa sinh viên: {"id":"22127147","name":"Lâm Tiến Huy"}
+[2025-02-26T16:23:10.008Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp","Lala"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học","aa"]}
+[2025-02-26T16:23:24.347Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp","Lala"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"]}
+[2025-02-26T16:23:39.464Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"]}
+[2025-02-26T16:24:04.015Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học","aaaa"]}
+[2025-02-26T16:36:55.438Z] Thêm sinh viên: {"id":"22127152","name":"Lâm Tiến Huy","dob":"2000-01-31","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"ssdjifsud","email":"lthuy22@clc.fitus.edu.vn","phone":"0739572452","status":"Đang học"}
+[2025-02-26T16:37:34.067Z] Thêm sinh viên: {"id":"22127180","name":"Juy La","dob":"2000-02-14","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"ssdjifsud","email":"huytienlam@gmail.com","phone":"0739572452","status":"Đang học"}
+[2025-02-26T16:41:33.587Z] Thêm sinh viên: {"id":"21233222","name":"huytienlam","dob":"2025-02-22","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2009","program":"Cử nhân","address":"ssdjifsud","email":"lthuy22@clc.fitus.edu.vn","phone":"0806643355","status":"Đang học"}
+[2025-02-26T16:41:41.413Z] Xóa sinh viên: {"id":"21233222","name":"huytienlam"}
+[2025-02-26T16:43:18.351Z] Thêm sinh viên: {"id":"25749432","name":"Ds Hsu Ss","dob":"2004-01-02","gender":"Male","faculty":"Khoa Công nghệ thông tin","course":"2025","program":"Cử nhân","address":"ssdjifsud","email":"hello@gmail.com","phone":"0703749413","status":"Đang học"}
+[2025-02-26T17:36:46.358Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"]}

@@ -1,0 +1,19 @@
+<h2>Import &amp; Export</h2>
+
+<form action="/import-csv" method="POST" enctype="multipart/form-data">
+<input type="file" name="csvFile" accept=".csv" required>
+    <button type="submit">Tải lên CSV</button>
+</form>
+
+<form action="/import-json" method="POST" enctype="multipart/form-data">
+    <input type="file" name="jsonFile" accept=".json" required>
+    <button type="submit">Tải lên JSON</button>Quản lý Danh sách Lựa chọn
+</form>
+
+<a href="/export-csv">
+    <button>Tải về CSV</button>
+</a>
+
+<a href="/export-json">
+    <button>Tải về JSON</button>
+</a>

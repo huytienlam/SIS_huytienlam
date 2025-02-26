@@ -1,5 +1,18 @@
 [
   {
+    "id": "22127154",
+    "name": "Lâm Tiến Huy",
+    "dob": "2002-02-14",
+    "gender": "Nam",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2022",
+    "program": "Cử nhân",
+    "address": "Fdfdsd",
+    "email": "lthuy22@clc.fitus.edu.vn",
+    "phone": "0703102330",
+    "status": "Đang học"
+  },
+  {
     "id": "22127153",
     "name": "Lâm Tiến Huy",
     "dob": "2002-02-14",
@@ -22,21 +35,8 @@
     "program": "Cử nhân",
     "address": "Fdfdsd",
     "email": "hello@gmail.com",
-    "phone": "0803322222",
+    "phone": "0827393443",
     "status": "Đã tốt nghiệp"
-  },
-  {
-    "id": "22127154",
-    "name": "Lâm Tiến Huy",
-    "dob": "2002-02-14",
-    "gender": "Male",
-    "faculty": "Khoa Công nghệ thông tin",
-    "course": "2022",
-    "program": "Cử nhân",
-    "address": "Fdfdsd",
-    "email": "hello@gmail.com",
-    "phone": "0703957245",
-    "status": "Đang học"
   },
   {
     "id": "22127157",
@@ -75,6 +75,58 @@
     "address": "Fdfdsd",
     "email": "lthuy22@clc.fitus.edu.vn",
     "phone": "0739572452",
+    "status": "Đang học"
+  },
+  {
+    "id": "22127100",
+    "name": "Lâm Tiến Huy",
+    "dob": "2002-01-31",
+    "gender": "Male",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2022",
+    "program": "Cử nhân",
+    "address": "ssdjifsud",
+    "email": "hello@gmail.com",
+    "phone": "0739572452",
+    "status": "Đang học"
+  },
+  {
+    "id": "22127152",
+    "name": "Lâm Tiến Huy",
+    "dob": "2000-01-31",
+    "gender": "Male",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2022",
+    "program": "Cử nhân",
+    "address": "ssdjifsud",
+    "email": "lthuy22@clc.fitus.edu.vn",
+    "phone": "0739572452",
+    "status": "Đang học"
+  },
+  {
+    "id": "22127180",
+    "name": "Juy La",
+    "dob": "2000-02-14",
+    "gender": "Male",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2022",
+    "program": "Cử nhân",
+    "address": "ssdjifsud",
+    "email": "huytienlam@gmail.com",
+    "phone": "0739572452",
+    "status": "Đang học"
+  },
+  {
+    "id": "25749432",
+    "name": "Ds Hsu Ss",
+    "dob": "2004-01-02",
+    "gender": "Male",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2025",
+    "program": "Cử nhân",
+    "address": "ssdjifsud",
+    "email": "hello@gmail.com",
+    "phone": "0703749413",
     "status": "Đang học"
   }
 ]
