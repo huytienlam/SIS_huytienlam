@@ -1,0 +1,49 @@
+.add-student-form {
+    font-size: 1.2rem;
+    padding: 0 2em;
+    min-width: 60%;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+}
+
+.add-student-form input, select {
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    border: 1px solid #443d32;
+    border-radius: 3rem;
+    background-color: #edeae6;
+    color: #443d32;
+    min-width: 50%;
+}
+
+form label {
+    display: block;
+    position: relative;
+}
+
+.error {
+    position: absolute;
+    left: 0;
+    bottom: -1.1rem;
+    color: #392e1d;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.add-student-form label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.add-student-form label span {
+    flex-basis: 7em;
+    text-align: left;
+}
+
+.add-student-form input, 
+.add-student-form select {
+    flex-grow: 1; /* Input sẽ mở rộng để lấp đầy không gian còn lại */
+}

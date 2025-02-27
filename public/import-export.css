@@ -1,0 +1,101 @@
+.import-export-form {
+    display: flex;
+    align-items: center; /* Ensures label and button are aligned */
+    justify-content: center;
+    gap: 2rem; /* Space between elements */
+}
+
+.import-export-form input {
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    border-radius: 3rem;
+    background-color: #edeae6;
+    color: #443d32;
+    min-width: 25%;
+}
+
+/* Hide the actual file input */
+.import-export-form input[type="file"] {
+    display: none;
+}
+
+/* Style the custom file input button */
+.custom-file-upload {
+    font-size: 1rem;
+    padding: 1em;
+    font-weight: 800;
+    background-color: #edeae6;
+    color: #443d32;
+    border: 1px solid #443d32;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+}
+
+.custom-file-upload:hover {
+    background-color: #443d32;
+    color: #edeae6;
+}
+
+.custom-file-upload:active {
+    background-color: #392e1d;
+    color: #edeae6;
+}
+
+.import-export-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    width: 30rem;
+}
+
+.upload-button {
+    font-size: 1rem;
+    border-radius: 2rem;
+    padding: 1em;
+    font-weight: 800;
+    width: 10rem;
+}
+
+.upload-button-2 {
+    font-size: 1rem;
+    border-radius: 2rem;
+    padding: 1em;
+    font-weight: 800;
+    width: 100%;
+}
+
+.import-export-form-container {
+    gap: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column; /* Các form sẽ xếp chồng lên nhau */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    gap: 1rem;
+    width: 100%;
+}
+
+.export-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50%;
+}

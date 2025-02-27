@@ -1,72 +1,76 @@
-<h2>Cập nhật thông tin sinh viên</h2>
+<div class="container">
+  <h1>Cập nhật thông tin</h1>
 
-<!-- Bảng hiển thị thông tin sinh viên hiện tại -->
-<table border="1" cellpadding="5" cellspacing="0">
-  <tr>
-    <th>MSSV</th>
-    <th>Họ tên</th>
-    <th>Ngày sinh</th>
-    <th>Giới tính</th>
-    <th>Khoa</th>
-    <th>Khóa</th>
-    <th>Chương trình</th>
-    <th>Địa chỉ</th>
-    <th>Email</th>
-    <th>Số điện thoại</th>
-    <th>Tình trạng</th>
-  </tr>
-  <tr>
-    <td>{{student.id}}</td>
-    <td>{{student.name}}</td>
-    <td>{{student.dob}}</td>
-    <td>{{student.gender}}</td>
-    <td>{{student.faculty}}</td>
-    <td>{{student.course}}</td>
-    <td>{{student.program}}</td>
-    <td>{{student.address}}</td>
-    <td>{{student.email}}</td>
-    <td>{{student.phone}}</td>
-    <td>{{student.status}}</td>
-  </tr>
-</table>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <th>MSSV</th>
+      <th>Họ tên</th>
+      <th>Ngày sinh</th>
+      <th>Giới tính</th>
+      <th>Khoa</th>
+      <th>Khoá</th>
+      <th>Chương trình</th>
+      <th>Địa chỉ</th>
+      <th>Email</th>
+      <th>Số điện thoại</th>
+      <th>Tình trạng</th>
+    </tr>
+    <tr>
+      <td>{{student.id}}</td>
+      <td>{{student.name}}</td>
+      <td>{{student.dob}}</td>
+      <td>{{student.gender}}</td>
+      <td>{{student.faculty}}</td>
+      <td>{{student.course}}</td>
+      <td>{{student.program}}</td>
+      <td>{{student.address}}</td>
+      <td>{{student.email}}</td>
+      <td>{{student.phone}}</td>
+      <td>{{student.status}}</td>
+    </tr>
+  </table>
 
-<!-- Form cập nhật các trường được phép thay đổi -->
-<h3>Cập nhật thông tin liên hệ</h3>
-<form id="updateForm" method="POST" action="/update/{{student.id}}">
-  <label>Địa chỉ: 
-    <input type="text" id="address" name="address" placeholder="{{student.address}}">
-    <small class="error"></small>
-  </label><br>
-  
-  <label>Email: 
-    <input type="email" id="email" name="email" placeholder="{{student.email}}">
-    <small class="error"></small>
-  </label><br>
-  
-  <label>Số điện thoại: 
-    <input type="text" id="phone" name="phone" placeholder="{{student.phone}}">
-    <small class="error"></small>
-  </label><br>
-  
-  <label>Tình trạng: 
-    <select id="status" name="status">
-      <option value="">-- Chọn tình trạng --</option>
-      <option value="Đang học" {{#if (eq student.status "Đang học")}}selected{{/if}}>Đang học</option>
-      <option value="Đã tốt nghiệp" {{#if (eq student.status "Đã tốt nghiệp")}}selected{{/if}}>Đã tốt nghiệp</option>
-      <option value="Đã thôi học" {{#if (eq student.status "Đã thôi học")}}selected{{/if}}>Đã thôi học</option>
-      <option value="Tạm dừng học" {{#if (eq student.status "Tạm dừng học")}}selected{{/if}}>Tạm dừng học</option>
-    </select>
-    <small class="error"></small>
-  </label><br>
-  
-  <button type="submit">Cập nhật</button>
-</form>
+  <h3>Thông tin cập nhật</h3>
+  <form class="update-form" id="updateForm" method="POST" action="/update/{{student.id}}">
+  <div class="update-form-divider">
+    <div>
+      <label><span>Địa chỉ</span>
+        <input type="text" id="address" name="address" placeholder="{{student.address}}">
+        <small class="error"></small>
+      </label><br>
+      
+      <label><span>Email</span>
+        <input type="email" id="email" name="email" placeholder="{{student.email}}">
+        <small class="error"></small>
+      </label><br>
+    </div>
+    <div>
+      <label><span>Số điện thoại</span>
+        <input type="text" id="phone" name="phone" placeholder="{{student.phone}}">
+        <small class="error"></small>
+      </label><br>
+      
+      <label><span>Tình trạng</span>
+        <select id="status" name="status">
+          <option value="">-- Chọn tình trạng --</option>
+          <option value="Đang học" {{#if (eq student.status "Đang học")}}selected{{/if}}>Đang học</option>
+          <option value="Đã tốt nghiệp" {{#if (eq student.status "Đã tốt nghiệp")}}selected{{/if}}>Đã tốt nghiệp</option>
+          <option value="Đã thôi học" {{#if (eq student.status "Đã thôi học")}}selected{{/if}}>Đã thôi học</option>
+          <option value="Tạm dừng học" {{#if (eq student.status "Tạm dừng học")}}selected{{/if}}>Tạm dừng học</option>
+        </select>
+        <small class="error"></small>
+      </label><br>
+    </div>
+  </div>
+    <button class="search-button" type="submit">Cập nhật</button>
+  </form>
+</div>
 
 <!-- Modal hiển thị thông báo -->
-<div id="updateModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5);">
-  <div class="modal-content" style="background:#fff; padding:20px; margin:15% auto; width:300px; text-align:center; border-radius:5px;">
-    <p id="updateModalMessage"></p>
-    <button id="updateModalClose">Close</button>
+<div id="updateModal" class="modal">
+  <div class="modal-content">
+    <p style="margin-bottom: 1em" id="updateModalMessage"></p>
+    <button class="update-delete-button" id="updateModalClose">Đóng</button>
   </div>
 </div>
 

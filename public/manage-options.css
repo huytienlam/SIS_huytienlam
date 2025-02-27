@@ -1,0 +1,29 @@
+.manage-options {
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    gap: 10em;
+}
+
+.option-group {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.option-group ul {
+    list-style: none;
+}
+
+.option-group-ul {
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    border: 1px solid #443d32;
+    border-radius: 3rem;
+    background-color: #edeae6;
+    color: #443d32;
+    max-width: 100%;
+    width: 15em;
+    margin-bottom: 0.5em;
+}

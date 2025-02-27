@@ -1,18 +1,50 @@
-<h2>Quản lý Danh sách Lựa chọn</h2>
+<div class="container">
+    <h1>Cài đặt thông tin</h1>
 
-<h3>Faculties (Khoa)</h3>
-<ul id="facultyList"></ul>
-<button onclick="addItem('faculty')">Thêm Khoa</button>
+    <div class="manage-options">
+        <div class="option-group">
+            <h3>Khoa</h3>
+            <ul id="facultyList"></ul>
+            <button class="search-button" onclick="addItem('faculty')">Thêm Khoa</button>
+        </div>
 
-<h3>Programs (Chương trình)</h3>
-<ul id="programList"></ul>
-<button onclick="addItem('program')">Thêm Chương trình</button>
+        <div class="option-group">
+            <h3>Chương trình</h3>
+            <ul id="programList"></ul>
+            <button class="search-button" onclick="addItem('program')">Thêm Chương trình</button>
+        </div>
 
-<h3>Statuses (Trạng thái)</h3>
-<ul id="statusList"></ul>
-<button onclick="addItem('status')">Thêm Trạng thái</button>
+        <div class="option-group">
+            <h3>Trạng thái</h3>
+            <ul id="statusList"></ul>
+            <button class="search-button" onclick="addItem('status')">Thêm Trạng thái</button>
+        </div>
+    </div>
 
-<button onclick="saveChanges()">Lưu Thay Đổi</button>
+    <button class="search-button" onclick="saveChanges()">Lưu thay đổi</button>
+</div>
+
+<!-- Modal thông báo -->
+<div id="messageModal" class="modal">
+  <div class="modal-content">
+    <p style="margin-bottom: 1em" id="modalText"></p>
+    <button class="update-delete-button" id="closeModal">Đóng</button>
+  </div>
+</div>
+
+<script>
+function showModal(message) {
+    let modal = document.getElementById("messageModal");
+    let modalText = document.getElementById("modalText");
+    modalText.textContent = message;
+    modal.style.display = "block";
+}
+
+document.getElementById("closeModal").addEventListener("click", function() {
+    document.getElementById("messageModal").style.display = "none";
+    window.location.href = "/"; // Điều hướng về trang chủ, thay đổi URL nếu cần
+});
+</script>
 
 <script>
 async function loadOptions() {
@@ -23,8 +55,8 @@ async function loadOptions() {
         let list = document.getElementById(id + "List");
         list.innerHTML = items.map((item, index) => 
             `<li>
-                <input type="text" value="${item}" id="${id}-${index}">
-                <button onclick="removeItem('${id}', ${index})">Xóa</button>
+                <input class="option-group-ul" type="text" value="${item}" id="${id}-${index}">
+                <button class="update-delete-button" onclick="removeItem('${id}', ${index})">Xóa</button>
             </li>`).join("");
     }
 
@@ -37,8 +69,8 @@ function addItem(category) {
     let list = document.getElementById(category + "List");
     let index = list.children.length;
     let newItem = `<li>
-        <input type="text" id="${category}-${index}">
-        <button onclick="removeItem('${category}', ${index})">Xóa</button>
+        <input class="option-group-ul" type="text" id="${category}-${index}">
+        <button class="update-delete-button" onclick="removeItem('${category}', ${index})">Xóa</button>
     </li>`;
     list.insertAdjacentHTML("beforeend", newItem);
 }
@@ -63,9 +95,14 @@ async function saveChanges() {
             body: JSON.stringify(data),
         });
         let result = await response.json();
-        if (result.success) alert("Cập nhật thành công!");
+        if (result.success) {
+            showModal("Cập nhật thành công!");
+        } else {
+            showModal("Cập nhật thất bại!");
+        }
     } catch (error) {
         console.error("Lỗi khi cập nhật danh sách:", error);
+        showModal("Có lỗi xảy ra, vui lòng thử lại!");
     }
 }
 
