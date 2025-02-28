@@ -3,6 +3,16 @@
 
     <div class="manage-options">
         <div class="option-group">
+            <h3 for="email-prefix">Email</h3>
+                <div>
+                    @ <input class="option-group-ul" type="text" id="email-prefix" name="email-prefix" placeholder="mail">
+                    . <input class="option-group-ul" type="text" id="email-domain" name="email-domain" placeholder="com">
+                </div>
+        </div>
+    </div>
+
+    <div class="manage-options">
+        <div class="option-group">
             <h3>Khoa</h3>
             <ul id="facultyList"></ul>
             <button class="search-button" onclick="addItem('faculty')">Thêm Khoa</button>
@@ -47,22 +57,36 @@ document.getElementById("closeModal").addEventListener("click", function() {
 </script>
 
 <script>
+document.addEventListener("DOMContentLoaded", async function () {
+    await loadOptions();
+});
+
 async function loadOptions() {
-    let response = await fetch("/options");
-    let data = await response.json();
+    try {
+        let response = await fetch("/options");
+        let data = await response.json();
 
-    function renderList(id, items) {
-        let list = document.getElementById(id + "List");
-        list.innerHTML = items.map((item, index) => 
-            `<li>
-                <input class="option-group-ul" type="text" value="${item}" id="${id}-${index}">
-                <button class="update-delete-button" onclick="removeItem('${id}', ${index})">Xóa</button>
-            </li>`).join("");
+        function renderList(id, items) {
+            let list = document.getElementById(id + "List");
+            list.innerHTML = items.map((item, index) => 
+                `<li>
+                    <input class="option-group-ul" type="text" value="${item}" id="${id}-${index}">
+                    <button class="update-delete-button" onclick="removeItem('${id}', ${index})">Xóa</button>
+                </li>`).join("");
+        }
+
+        renderList("faculty", data.faculties);
+        renderList("program", data.programs);
+        renderList("status", data.statuses);
+
+        // Load email
+        if (data.emailformat.length === 2) {
+            document.querySelector("#email-prefix").value = data.emailformat[0].replace("@", "");  // Bỏ @
+            document.querySelector("#email-domain").value = data.emailformat[1].replace(".", "");  // Bỏ .
+        }
+    } catch (error) {
+        console.error("Lỗi khi tải dữ liệu:", error);
     }
-
-    renderList("faculty", data.faculties);
-    renderList("program", data.programs);
-    renderList("status", data.statuses);
 }
 
 function addItem(category) {
@@ -82,11 +106,18 @@ function removeItem(category, index) {
 async function saveChanges() {
     let getValues = (id) => [...document.querySelectorAll(`#${id}List input`)].map(input => input.value.trim()).filter(Boolean);
 
+    // Lấy giá trị email từ ô nhập và thêm lại @, .
+    let emailPrefix = document.getElementById("email-prefix").value.trim();
+    let emailDomain = document.getElementById("email-domain").value.trim();
+
     let data = {
         faculties: getValues("faculty"),
         programs: getValues("program"),
         statuses: getValues("status"),
+        emailformat: emailPrefix && emailDomain ? [`@${emailPrefix}`, `.${emailDomain}`] : []  // Chỉ lưu nếu có giá trị
     };
+
+    console.log("Dữ liệu gửi lên:", data); // Kiểm tra object trước khi gửi
 
     try {
         let response = await fetch("/update-options", {
@@ -106,6 +137,16 @@ async function saveChanges() {
     }
 }
 
-// Gọi hàm khi trang tải
-document.addEventListener("DOMContentLoaded", loadOptions);
+// Hiển thị thông báo modal
+function showModal(message) {
+    let modal = document.getElementById("messageModal");
+    let modalText = document.getElementById("modalText");
+    modalText.textContent = message;
+    modal.style.display = "block";
+}
+
+document.getElementById("closeModal").addEventListener("click", function() {
+    document.getElementById("messageModal").style.display = "none";
+    window.location.href = "/"; // Điều hướng về trang chủ, thay đổi URL nếu cần
+});
 </script>

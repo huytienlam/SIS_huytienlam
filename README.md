@@ -9,6 +9,7 @@
 ## 1. CẤU TRÚC SOURCE CODE
 - Folder C++ (old) hiện chỉ update tới Version 1.0.0, các version sau sẽ sử dụng web.
 
+```
 /SIS_huytienlam
 │── /node_modules
 │── /data
@@ -40,13 +41,14 @@
 │── package-lock.json
 │── package.json
 │── README.md
+```
 
 
 ## 2. BIÊN DỊCH
 - Máy được cài đặt Node.JS và Visual Studio Code.
 - Tải folder từ GitHub về và giải nén.
 - Mở terminal trong VSCode từ folder SIS_huytienlam.
-- Gõ lệnh nodemon app.js.
+- Gõ lệnh *nodemon app.js* để debug hoặc *node.js* để chạy.
 
 
 ## 3. CHẠY CHƯƠNG TRÌNH
@@ -100,6 +102,7 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 - Nếu hoàn thành, chọn Lưu thay đổi.
 
 ### IMPORT VÀ EXPORT FILE (JSON và CSV)
+![Import & Export](/screenshots/Import%20Export.png)
 *IMPORT*
 - Chọn tệp ngay vị trí CSV, bấm Tải lên CSV.
 - (HOẶC) chọn tệp ngay vị trí JSON, bấm Tải lên JSON.
@@ -113,4 +116,4 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 - Xem activity log trong /middleware/logs/activity.log
 
 
-#### Đó là toàn bộ tính năng của Version 2.1.1.
+#### Đó là toàn bộ tính năng của Version 2.2.0!

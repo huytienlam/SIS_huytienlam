@@ -167,5 +167,18 @@
     "email": "lthuy22@clc.fitus.edu.vn",
     "phone": "0839474824",
     "status": "Đang học"
+  },
+  {
+    "id": "23654567",
+    "name": "Lâm Tiến Huyy",
+    "dob": "2000-02-21",
+    "gender": "Nam",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2023",
+    "program": "Cử nhân",
+    "address": "Fdfdsd",
+    "email": "hello@gmail.com",
+    "phone": "0739572452",
+    "status": "Đang học"
   }
 ]
