@@ -5,6 +5,7 @@ const upload = multer({ dest: "uploads/" });
 const fs = require("fs");
 const csvParser = require("csv-parser");
 const logActivity = require("../middleware/logger"); // Import middleware logger
+const { validateEmail, validatePhone } = require("../scripts/validate");
 
 // Đường dẫn đến các file dữ liệu
 const dataFile = "./data/students.json";
@@ -126,7 +127,7 @@ router.post("/update/:id", (req, res) => {
     let students = getStudents();
     const index = students.findIndex(s => s.id === req.params.id);
     if (index === -1) {
-        return res.status(404).send("Không tìm thấy sinh viên để cập nhật.");
+        return res.status(404).send("Không tìm thấy sinh viên.");
     }
     const student = students[index];
     const oldData = { ...student };
@@ -138,7 +139,7 @@ router.post("/update/:id", (req, res) => {
     if (req.body.email && req.body.email.trim() !== "") {
         const email = req.body.email.trim();
         // Kiểm tra định dạng email
-        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+        if (validateEmail(email)) {
             return res.status(400).send("Email không hợp lệ.");
         }
         student.email = email;
@@ -146,7 +147,7 @@ router.post("/update/:id", (req, res) => {
     if (req.body.phone && req.body.phone.trim() !== "") {
         const phone = req.body.phone.trim();
         // Kiểm tra số điện thoại: 10 số, đầu số hợp lệ của VN
-        if (!/^(03|05|07|08|09)\d{8}$/.test(phone)) {
+        if (validatePhone(phone)) {
             return res.status(400).send("Số điện thoại không hợp lệ.");
         }
         student.phone = phone;
@@ -203,9 +204,23 @@ router.get("/options", (req, res) => {
 // API cập nhật danh sách lựa chọn
 router.post("/update-options", (req, res) => {
     try {
-        const { faculties, programs, statuses } = req.body;
-        const newOptions = { faculties, programs, statuses };
+        const { faculties, programs, statuses, emailformat } = req.body;
+
+        // Đọc dữ liệu cũ
+        const oldData = JSON.parse(fs.readFileSync(optionsFile, "utf-8"));
+
+        // Tạo dữ liệu mới, nếu `emailformat` không được gửi lên, giữ nguyên dữ liệu cũ
+        const newOptions = {
+            faculties,
+            programs,
+            statuses,
+            emailformat: emailformat !== undefined ? emailformat : oldData.emailformat,
+        };
+
+        // Ghi vào file JSON
         fs.writeFileSync(optionsFile, JSON.stringify(newOptions, null, 2), "utf-8");
+
+        // Ghi log và phản hồi
         logActivity("Cập nhật danh sách lựa chọn", newOptions);
         res.json({ success: true, message: "Cập nhật danh sách thành công!" });
     } catch (error) {

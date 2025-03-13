@@ -1,0 +1,14 @@
+id,name,dob,gender,faculty,course,program,address,email,phone,status
+22127153,Lâm Tiến,2002-02-14,Nam,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,huytienlam@gmail.com,0739572452,Đang học
+22127151,Lâm Tiến Huy,2001-02-28,Nam,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,hello@gmail.com,0803322222,Đã tốt nghiệp
+22127154,Lâm Tiến Huy,2002-02-14,Nam,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,hello@gmail.com,0703957245,Đang học
+22127157,Haha Haha,2002-01-31,Nam,Khoa Luật,2022,Cử nhân,Fdfdsd,hello@gmail.com,0873445433,Đang học
+22127944,Haha Haha,2003-02-01,Nam,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,lthuy22@clc.fitus.edu.vn,0739572452,Đang học
+22127333,Haha Haha,2003-02-01,Nam,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,lthuy22@clc.fitus.edu.vn,0739572452,Đang học
+22127100,Lâm Tiến Huy,2002-01-31,Nam,Khoa Công nghệ thông tin,2022,Cử nhân,ssdjifsud,hello@gmail.com,0739572452,Đang học
+22127147,Lâm Tiến Huy,2000-02-08,Nữ,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,hello@gmail.com,0739572452,Đang học
+22127159,Hà Thị Thu,2000-02-21,Nữ,Khoa Tiếng Anh thương mại,2022,Cử nhân,ssdjifsud,lthuy22@clc.fitus.edu.vn,0739572452,Đang học
+,Invalid Data,2000-02-21,Nữ,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,invalid_email,0739572452,Đang học
+2293AHJN,Invalid ID,2000-02-21,Nữ,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,Đang học
+22127160,Missing Email,2000-02-21,Nữ,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,,0739572452,Đang học
+22127555,Missing Email,,Nam,Khoa Công nghệ thông tin,2022,Cử nhân,Fdfdsd,,0739572452,Đang học

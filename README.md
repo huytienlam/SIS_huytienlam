@@ -16,20 +16,33 @@
 │   │── options.json *Chứa các tuỳ chọn cho Khoa, Chương trình, và Trạng thái*
 │   │── students.json *Database chính chứa dữ liệu sinh viên*
 │   │── version.json *Chứa version và build date*
+│── /docs
+│   │── Unit Testing.pdf *Ex03 research và test*
 │── /middleware
 │   │── logger.js *Tạo activity log*
 │   │── /logs
 │       │── activity.logs *Lưu trữ lịch sử log*
 │── /public
 │   │── styles.css
-│   │── sample.json *File JSON mẫu dữ liệu import*
-│   │── sample.csv *File CSV mẫu dữ liệu import*
+│   │── add-student.css
+│   │── home.css
+│   │── import-export.css
+│   │── manage-options.css
+│   │── update-student.css
 │── /routes
 │   │── students.js *Routing cho các tính năng quản lý sinh viên*
-│── /screenshots
+│── /sample
+│   │── sample.json *File JSON mẫu dữ liệu import*
+│   │── sample.csv *File CSV mẫu dữ liệu import*
+│── /screenshots *Screenshot các trang của web*
+│── /scripts
+│── /tests
+│   │── add-student-test.js
+│   │── search-test.js
 │── /views
 │   │── add-student.hbs *Trang thêm sinh viên*
 │   │── home.hbs *Trang chủ, display toàn bộ sinh viên*
+│   │── import-export.hbs *Trang import và export dữ liệu từ JSON/CSV*
 │   │── manage-options.hbs *Trang thay đổi tuỳ chọn cho Khoa, Chương trình, và Trạng thái*
 │   │── update-student.hbs *Trang cập nhật dữ liệu sinh viên*
 │   │── /partials

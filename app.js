@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use("/scripts", express.static(path.join(__dirname, "/scripts")));
 
 // Setup Handlebars
 app.engine("hbs", exphbs.engine({ 

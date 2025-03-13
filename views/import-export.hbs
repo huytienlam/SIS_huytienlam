@@ -38,11 +38,11 @@
 </div>
 
 <script>
-document.getElementById("csvFile").addEventListener("change", function() {
-    document.getElementById("csv-file-name").textContent = this.files.length > 0 ? this.files[0].name : "Chưa chọn file";
-});
+    document.getElementById("csvFile").addEventListener("change", function() {
+        document.getElementById("csv-file-name").textContent = this.files.length > 0 ? this.files[0].name : "Chưa chọn file";
+    });
 
-document.getElementById("jsonFile").addEventListener("change", function() {
-    document.getElementById("json-file-name").textContent = this.files.length > 0 ? this.files[0].name : "Chưa chọn file";
-});
+    document.getElementById("jsonFile").addEventListener("change", function() {
+        document.getElementById("json-file-name").textContent = this.files.length > 0 ? this.files[0].name : "Chưa chọn file";
+    });
 </script>

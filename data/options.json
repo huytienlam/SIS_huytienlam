@@ -17,5 +17,9 @@
     "Đã tốt nghiệp",
     "Đã thôi học",
     "Tạm dừng học"
+  ],
+  "emailformat": [
+    "@gmail",
+    ".com"
   ]
 }

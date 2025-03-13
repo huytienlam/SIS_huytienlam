@@ -31,7 +31,7 @@
   </table>
 
   <h3>Thông tin cập nhật</h3>
-  <form class="update-form" id="updateForm" method="POST" action="/update/{{student.id}}">
+  <form class="update-form" id="updateForm" method="POST" action="/update/{{student.id}}" data-id="{{student.id}}"> 
   <div class="update-form-divider">
     <div>
       <label><span>Địa chỉ</span>
@@ -74,73 +74,5 @@
   </div>
 </div>
 
-<script>
-document.getElementById("updateForm").addEventListener("submit", async function(event) {
-  event.preventDefault(); // Chặn submit mặc định
-  let valid = true;
-  let errors = document.querySelectorAll("#updateForm .error");
-  errors.forEach(error => error.textContent = "");
-
-  let email = document.getElementById("email").value.trim();
-  let phone = document.getElementById("phone").value.trim();
-  // Trường Address và Status không bắt buộc cập nhật nếu để trống, giữ nguyên giá trị cũ
-
-  // Kiểm tra email nếu người dùng nhập
-  if (email !== "") {
-    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-      document.querySelector("#email + .error").textContent = "Email không hợp lệ.";
-      valid = false;
-    }
-  }
-  // Kiểm tra số điện thoại nếu người dùng nhập
-  if (phone !== "") {
-    if (!/^(03|05|07|08|09)\d{8}$/.test(phone)) {
-      document.querySelector("#phone + .error").textContent = "Số điện thoại không hợp lệ.";
-      valid = false;
-    }
-  }
-
-  if (!valid) {
-    return;
-  }
-
-  // Nếu hợp lệ, gửi form qua fetch
-  let formData = new FormData(this);
-  let urlEncodedData = new URLSearchParams(formData);
-
-  try {
-    let response = await fetch("/update/{{student.id}}", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: urlEncodedData.toString()
-    });
-    if (!response.ok) {
-      let errText = await response.text();
-      showUpdateModal(errText);
-    } else {
-      showUpdateModal("Cập nhật thành công!");
-    }
-  } catch (error) {
-    console.error("Lỗi cập nhật:", error);
-    showUpdateModal("Có lỗi xảy ra khi cập nhật.");
-  }
-});
-
-function showUpdateModal(message) {
-  let modal = document.getElementById("updateModal");
-  let modalMessage = document.getElementById("updateModalMessage");
-  modalMessage.textContent = message;
-  modal.style.display = "block";
-}
-
-document.getElementById("updateModalClose").addEventListener("click", function() {
-  let modal = document.getElementById("updateModal");
-  modal.style.display = "none";
-  // Nếu cập nhật thành công, chuyển hướng về /students
-  if (document.getElementById("updateModalMessage").textContent === "Cập nhật thành công!") {
-    window.location.href = "/";
-  }
-});
-</script>
+<script src="/scripts/validate.js" defer></script>
+<script src="/scripts/update-student.js" defer></script>
