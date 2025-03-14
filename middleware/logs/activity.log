@@ -180,3 +180,5 @@
 [2025-03-13T17:22:04.670Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["@haha",".hoho"]}
 [2025-03-13T17:22:29.191Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["@hello",".hi"]}
 [2025-03-13T17:26:06.850Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["@gmail",".com"]}
+[2025-03-13T17:55:05.362Z] EXPORT_JSON: {"exportedCount":16}
+[2025-03-13T17:55:06.891Z] IMPORT_JSON: {"importedCount":0}

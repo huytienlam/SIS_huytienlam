@@ -3,6 +3,7 @@
 - Sinh viên: LÂM TIẾN HUY
 - MSSV: 22127151
 - Môn: THIẾT KẾ PHẦN MỀM - 22KTPM3
+- Version: 4.0.0
 - GitHub Repository: https://github.com/huytienlam/SIS_huytienlam
 
 
@@ -13,11 +14,14 @@
 /SIS_huytienlam
 │── /node_modules
 │── /data
-│   │── options.json *Chứa các tuỳ chọn cho Khoa, Chương trình, và Trạng thái*
+│   │── options.json *Chứa các tuỳ chọn cho Khoa, Chương trình, Trạng thái, và Email*
 │   │── students.json *Database chính chứa dữ liệu sinh viên*
 │   │── version.json *Chứa version và build date*
 │── /docs
-│   │── Unit Testing.pdf *Ex03 research và test*
+│   │── Unit Testing & Documentation.pdf *Ex03 research & test*
+│   │── Principles In Software Design.pdf *Ex04 research*
+│   │── SRP & DRY Documentation.md *Ex04 report*
+│── │── Refactoring Documentation.md *Ex04 report*
 │── /middleware
 │   │── logger.js *Tạo activity log*
 │   │── /logs
@@ -29,6 +33,9 @@
 │   │── import-export.css
 │   │── manage-options.css
 │   │── update-student.css
+│   │── hcmus.svg *Logo HCMUS*
+│   │── sample.csv *File CSV để test import*
+│   │── sample.json *File JSON để test import*
 │── /routes
 │   │── students.js *Routing cho các tính năng quản lý sinh viên*
 │── /sample
@@ -36,9 +43,14 @@
 │   │── sample.csv *File CSV mẫu dữ liệu import*
 │── /screenshots *Screenshot các trang của web*
 │── /scripts
+│   │── add-student.js
+│   │── manage-options.js
+│   │── update-student.js
+│   │── validate.js
 │── /tests
-│   │── add-student-test.js
-│   │── search-test.js
+│   │── add-student.test.js
+│   │── search.test.js
+│── /uploads *Chứa các file CSV, JSON được import*
 │── /views
 │   │── add-student.hbs *Trang thêm sinh viên*
 │   │── home.hbs *Trang chủ, display toàn bộ sinh viên*
@@ -68,16 +80,21 @@
 - Truy cập http://localhost:3000 trên trình duyệt để xem chương trình.
 
 
-## 4. QUY CHUẨN
+## 4. QUY TẮC NGHIỆP VỤ
 ### Khi thêm hoặc sửa thông tin sinh viên, có những quy chuẩn rõ ràng đặt ra:
 - Không trùng MSSV.
 - MSSV phải có 8 chữ số, 2 só đầu trùng khớp với 2 số sau trong Khoá.
 - Từ ngày sinh đến khoá sinh viên tham gia học tập phải đủ 17 tuổi (cho những trường hợp chưa tới sinh nhật 18 tuổi).
-- Email phải có đủ định dạng sample@email.com.
+- Email phải có đủ định dạng sample@email.com và thuộc một tên miền nhất định, có thể cấu hình động.
 - Só điện thoại phải đủ 10 chữ số và đầu số phải chuẩn của Việt Nam.
 ### Import và Export có 2 định dạng JSON và CSV
 - Khi import, lưu ý rằng định dạng cả 2 file phải tương tự sample.csv và sample.json trong thư mục public.
-
+### Xuất giấy xác nhận sinh viên
+- Hỗ trợ 2 định dạng: Markdown và PDF.
+### Cài đặt về mặt dữ liệu và hệ thống
+- Tình trạng sinh viên chỉ có thể thay đổi theo một số quy tắc nhất định.
+- Chỉ được phép xóa sinh viên có creation date/time trong khoảng thời gian nhất định.
+- Cho phép xóa khoa, xóa tình trạng sinh viên, xóa chương trình đào tạo nếu không có ràng buộc về dữ liệu.
 
 ## 5. SỬ DỤNG CHƯƠNG TRÌNH
 Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sách sinh viên với các lựa chọn khác nhau.
@@ -127,6 +144,3 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 
 ### ACTIVITY LOG
 - Xem activity log trong /middleware/logs/activity.log
-
-
-#### Đó là toàn bộ tính năng của Version 2.2.0!
