@@ -24,8 +24,8 @@
 │── │── Refactoring Documentation.md *Ex04 report*
 │── /middleware
 │   │── logger.js *Tạo activity log*
-│   │── /logs
-│       │── activity.logs *Lưu trữ lịch sử log*
+│── /logs
+│   │── activity.logs *Lưu trữ lịch sử log*
 │── /public
 │   │── styles.css
 │   │── add-student.css
@@ -34,8 +34,6 @@
 │   │── manage-options.css
 │   │── update-student.css
 │   │── hcmus.svg *Logo HCMUS*
-│   │── sample.csv *File CSV để test import*
-│   │── sample.json *File JSON để test import*
 │── /routes
 │   │── students.js *Routing cho các tính năng quản lý sinh viên*
 │── /sample

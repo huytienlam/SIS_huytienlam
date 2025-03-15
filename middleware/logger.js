@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const logFilePath = path.join(__dirname, "logs", "activity.log");
+const logFilePath = path.join(__dirname, "..", "logs", "activity.log");
 
 // Đảm bảo thư mục logs tồn tại
 if (!fs.existsSync(path.dirname(logFilePath))) {

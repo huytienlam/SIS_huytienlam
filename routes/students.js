@@ -5,7 +5,7 @@ const upload = multer({ dest: "uploads/" });
 const fs = require("fs");
 const csvParser = require("csv-parser");
 const logActivity = require("../middleware/logger");
-const { validateEmail, validatePhone } = require("../scripts/validate");
+const { validateEmail, validatePhone, isValidStudent } = require("../scripts/validate");
 
 // Đường dẫn đến các file dữ liệu
 const dataFile = "./data/students.json";
@@ -233,92 +233,111 @@ router.get("/manage-options", (req, res) => {
 });
 
 // API Import từ CSV
-router.post("/import-csv", upload.single("csvFile"), (req, res) => {
+router.post("/import-csv", upload.single("csvFile"), async (req, res) => {
     if (!req.file) {
         logActivity("IMPORT_CSV_ERROR", { error: "Không có file tải lên" });
         return res.status(400).send("Vui lòng tải lên một file CSV.");
     }
-  
+
     const students = getStudents();
     const results = [];
     const filePath = req.file.path;
-  
-    fs.createReadStream(filePath)
-        .pipe(csvParser({ separator: "," }))
-        .on("data", (row) => {
-            if (row.id && row.name) {
-                const newStudent = {
-                    id: row.id.trim(),
-                    name: row.name.trim(),
-                    dob: row.dob.trim(),
-                    gender: row.gender.trim(),
-                    faculty: row.faculty.trim(),
-                    course: row.course.trim(),
-                    program: row.program.trim(),
-                    address: row.address.trim(),
-                    email: row.email.trim(),
-                    phone: row.phone.trim(),
-                    status: row.status.trim()
-                };
-  
-                if (!students.some(student => student.id === newStudent.id)) {
-                    results.push(newStudent);
-                }
-            }
-        })
-        .on("end", () => {
-            students.push(...results);
-            saveStudents(students);
-            fs.unlinkSync(filePath); // Xóa file tạm
-            logActivity("IMPORT_CSV", { importedCount: results.length });
-            res.redirect("/");
-        })
-        .on("error", (error) => {
-            console.error("Lỗi đọc CSV:", error);
-            logActivity("IMPORT_CSV_ERROR", { error: error.toString() });
-            res.status(500).send("Lỗi xử lý file CSV.");
+
+    const readCSV = async () => {
+        return new Promise((resolve, reject) => {
+            const pendingValidations = []; // Mảng chứa các promise validate
+
+            fs.createReadStream(filePath)
+                .pipe(csvParser({ separator: "," }))
+                .on("data", (row) => {
+                    if (row.id && row.name) {
+                        const newStudent = {
+                            id: row.id.trim(),
+                            name: row.name.trim(),
+                            dob: row.dob.trim(),
+                            gender: row.gender.trim(),
+                            faculty: row.faculty.trim(),
+                            course: row.course.trim(),
+                            program: row.program.trim(),
+                            address: row.address.trim(),
+                            email: row.email.trim(),
+                            phone: row.phone.trim(),
+                            status: row.status.trim()
+                        };
+
+                        if (!students.some(student => student.id === newStudent.id)) {
+                            // Thêm promise kiểm tra vào mảng
+                            const validationPromise = isValidStudent(newStudent).then(isValid => {
+                                if (isValid) results.push(newStudent);
+                            });
+                            pendingValidations.push(validationPromise);
+                        }
+                    }
+                })
+                .on("end", async () => {
+                    // Đợi tất cả quá trình validate hoàn tất
+                    await Promise.all(pendingValidations);
+                    resolve();
+                })
+                .on("error", (error) => reject(error));
         });
+    };
+
+    try {
+        await readCSV();
+        students.push(...results);
+        saveStudents(students);
+        fs.unlinkSync(filePath); // Xóa file tạm
+
+        logActivity("IMPORT_CSV", { importedCount: results.length });
+        res.redirect("/");
+    } catch (error) {
+        console.error("Lỗi xử lý CSV:", error);
+        logActivity("IMPORT_CSV_ERROR", { error: error.toString() });
+        res.status(500).send("Lỗi xử lý file CSV.");
+    }
 });
 
-// API Import từ JSON
-router.post("/import-json", upload.single("jsonFile"), (req, res) => {
+router.post("/import-json", upload.single("jsonFile"), async (req, res) => {
     if (!req.file) {
         logActivity("IMPORT_JSON_ERROR", { error: "Không có file tải lên" });
         return res.status(400).send("Vui lòng tải lên một file JSON.");
     }
-  
+
     const students = getStudents();
     const filePath = req.file.path;
-  
-    fs.readFile(filePath, "utf8", (err, data) => {
-        if (err) {
-            console.error("Lỗi đọc file JSON:", err);
-            logActivity("IMPORT_JSON_ERROR", { error: err.toString() });
-            return res.status(500).send("Lỗi xử lý file.");
-        }
-  
-        try {
-            const newStudents = JSON.parse(data);
-            let importedCount = 0;
-            newStudents.forEach(student => {
-                if (student.id && student.name) {
-                    if (!students.some(s => s.id === student.id)) {
+
+    try {
+        const data = await fs.promises.readFile(filePath, "utf8");
+        const newStudents = JSON.parse(data);
+
+        let importedCount = 0;
+        const pendingValidations = newStudents.map(async (student) => {
+            if (student.id && student.name) {
+                const isDuplicate = students.some(s => s.id === student.id);
+                if (!isDuplicate) {
+                    const isValid = await isValidStudent(student);
+                    if (isValid) {
                         students.push(student);
                         importedCount++;
                     }
                 }
-            });
-  
-            saveStudents(students);
-            fs.unlinkSync(filePath); // Xóa file tạm
-            logActivity("IMPORT_JSON", { importedCount });
-            res.redirect("/");
-        } catch (parseError) {
-            console.error("Lỗi phân tích JSON:", parseError);
-            logActivity("IMPORT_JSON_ERROR", { error: parseError.toString() });
-            res.status(400).send("File JSON không hợp lệ.");
-        }
-    });
+            }
+        });
+
+        // Đợi tất cả kiểm tra xong
+        await Promise.all(pendingValidations);
+
+        saveStudents(students);
+        fs.unlinkSync(filePath); // Xóa file tạm
+        logActivity("IMPORT_JSON", { importedCount });
+
+        res.redirect("/");
+    } catch (error) {
+        console.error("Lỗi xử lý JSON:", error);
+        logActivity("IMPORT_JSON_ERROR", { error: error.toString() });
+        res.status(400).send("File JSON không hợp lệ.");
+    }
 });
 
 // Export CSV

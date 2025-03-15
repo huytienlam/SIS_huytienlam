@@ -6,14 +6,16 @@
 - Version: 1.0
 
 ## SINGLE RESPONSIBILITY PRINCIPLE
-1. Phần **students.js** chủ yếu dành cho routing, nhưng hiện tại một file route đó đang xử lý quá nhiều mặt.
+1. Phần **students.js** chủ yếu dành cho routing, nhưng hiện tại file route đó đang xử lý quá nhiều mặt.
 => Tách riêng ra các phần như controllers, views, middleware để tối ưu hoá SRP.
 2. File **app.js** cũng đang chứa quá nhiều routes.
 => Tách riêng ra các routes theo chức năng.
 3. Một số file **.js** trong mục scripts đang tương đối khó hiểu, mục views thì lại để lửng các page.
 => Điều chỉnh và sắp xếp lại nội dung bên trong. 
-4. File **validate.js** đáng lẽ phải ở trong mục middleware.
+4. File **validate.js** đáng lẽ phải ở trong mục utils.
 => Di chuyển file về middleware và khởi tạo lại đường dẫn nếu có sử dụng.
+5. Folder **logs** đang nằm trong middleware cùng với logger.js.
+=> **Đã hoàn thành.** Chuyển thư mục logs ra thư mục gốc.
 #### Chỉnh sửa sẽ xuất hiện trong các version sau.
 
 ## DON'T REPEAT YOURSELF

@@ -103,6 +103,27 @@
         return "";
     }
 
+    async function isValidStudent(student) {
+        if (
+            !student.id || !student.name || !student.dob || !student.gender ||
+            !student.faculty || !student.course || !student.program ||
+            !student.address || !student.email || !student.phone || !student.status
+        ) {
+            return false; // Bỏ qua nếu thiếu dữ liệu
+        }
+    
+        if (validateId(student.id, student.course)) return false;
+        if (validateName(student.name)) return false;
+        if (validateDob(student.dob, student.course)) return false;
+        if (validatePhone(student.phone)) return false;
+        if (validateGender(student.gender)) return false;
+    
+        const emailError = await validateEmail(student.email);
+        if (emailError) return false;
+    
+        return true;
+    }
+
     // Dùng trên trình duyệt
     if (typeof window !== "undefined") {
         window.validateId = validateId;
@@ -111,6 +132,7 @@
         window.validateEmail = validateEmail;
         window.validatePhone = validatePhone;
         window.validateGender = validateGender;
+        window.isValidStudent = isValidStudent;
     }
 
     // Dùng trên Node.js (backend)
@@ -121,7 +143,8 @@
             validateDob, 
             validateEmail, 
             validatePhone, 
-            validateGender 
+            validateGender,
+            isValidStudent
         };
     }
 })(this);

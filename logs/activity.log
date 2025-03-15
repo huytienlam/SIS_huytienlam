@@ -1,0 +1,39 @@
+[2025-03-15T01:54:04.735Z] Tìm kiếm sinh viên: {"query":"1","facultyFilter":""}
+[2025-03-15T01:54:07.042Z] Tìm kiếm sinh viên: {"query":"haha","facultyFilter":""}
+[2025-03-15T01:54:10.453Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-03-15T01:54:13.132Z] Tìm kiếm sinh viên: {"query":"2212","facultyFilter":""}
+[2025-03-15T01:54:16.760Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-03-15T02:17:56.123Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-03-15T02:17:56.793Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-03-15T02:33:26.530Z] Xóa sinh viên: {"id":"22127160","name":"Missing Email"}
+[2025-03-15T02:33:28.359Z] Xóa sinh viên: {"id":"2293AHJN","name":"Invalid ID"}
+[2025-03-15T02:33:30.725Z] Xóa sinh viên: {"id":"25127555","name":"Boxing Demo"}
+[2025-03-15T02:33:32.051Z] Xóa sinh viên: {"id":"22127555","name":"Missing Email"}
+[2025-03-15T02:33:36.980Z] Xóa sinh viên: {"id":"22127152","name":"Lâm Tiến Huy"}
+[2025-03-15T02:33:38.234Z] Xóa sinh viên: {"id":"22127157","name":"Haha Haha"}
+[2025-03-15T02:33:38.869Z] Xóa sinh viên: {"id":"22127333","name":"Haha Haha"}
+[2025-03-15T02:33:39.411Z] Xóa sinh viên: {"id":"22127944","name":"Haha Haha"}
+[2025-03-15T02:33:39.923Z] Xóa sinh viên: {"id":"22127151","name":"Lâm Tiến Huy"}
+[2025-03-15T02:33:52.180Z] IMPORT_CSV: {"importedCount":2}
+[2025-03-15T02:34:00.315Z] Xóa sinh viên: {"id":"22127157","name":"Haha Haha"}
+[2025-03-15T02:34:02.861Z] Xóa sinh viên: {"id":"22127151","name":"Lâm Tiến Huy"}
+[2025-03-15T02:34:03.431Z] Xóa sinh viên: {"id":"25749432","name":"Ds Hsu Ss"}
+[2025-03-15T02:34:04.023Z] Xóa sinh viên: {"id":"22127147","name":"Lâm Tiến Huy"}
+[2025-03-15T02:34:04.927Z] Xóa sinh viên: {"id":"22127159","name":"Hà Thị Thu"}
+[2025-03-15T02:34:05.751Z] Xóa sinh viên: {"id":"22567654","name":"Haha Haha"}
+[2025-03-15T02:34:06.727Z] Xóa sinh viên: {"id":"22127180","name":"Juy La"}
+[2025-03-15T02:34:12.778Z] IMPORT_CSV: {"importedCount":3}
+[2025-03-15T02:46:21.904Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["clc.fitus.edu","vn"]}
+[2025-03-15T02:46:27.186Z] IMPORT_CSV: {"importedCount":3}
+[2025-03-15T02:46:46.480Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["clc","fitus.edu.vn"]}
+[2025-03-15T02:46:49.684Z] Xóa sinh viên: {"id":"22127944","name":"Haha Haha"}
+[2025-03-15T02:46:50.780Z] Xóa sinh viên: {"id":"22127333","name":"Haha Haha"}
+[2025-03-15T02:46:51.546Z] Xóa sinh viên: {"id":"22127159","name":"Hà Thị Thu"}
+[2025-03-15T02:46:58.082Z] IMPORT_CSV: {"importedCount":0}
+[2025-03-15T02:47:07.981Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["gmail","com"]}
+[2025-03-15T02:57:19.467Z] Xóa sinh viên: {"id":"22127100","name":"Lâm Tiến Huy"}
+[2025-03-15T02:57:19.887Z] Xóa sinh viên: {"id":"22127151","name":"Lâm Tiến Huy"}
+[2025-03-15T02:57:20.294Z] Xóa sinh viên: {"id":"22127157","name":"Haha Haha"}
+[2025-03-15T02:57:20.847Z] Xóa sinh viên: {"id":"22127147","name":"Lâm Tiến Huy"}
+[2025-03-15T02:57:21.476Z] Xóa sinh viên: {"id":"22127154","name":"Lâm Tiến Huy"}
+[2025-03-15T02:57:28.998Z] IMPORT_JSON: {"importedCount":5}
