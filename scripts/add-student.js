@@ -51,12 +51,14 @@ document.getElementById("studentForm").addEventListener("submit", async function
     let email = document.getElementById("email").value.trim();
     let phone = document.getElementById("phone").value.trim();
 
+    let emailError = await validateEmail(email);
+
     // Kiểm tra bằng các hàm đã viết sẵn
     let validators = [
         { field: "id", error: validateId(id, course) },
         { field: "name", error: validateName(name) },
         { field: "dob", error: validateDob(dob, course) },
-        { field: "email", error: validateEmail(email) },
+        { field: "email", error: emailError },
         { field: "phone", error: validatePhone(phone) }
     ];
 

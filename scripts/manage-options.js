@@ -40,8 +40,8 @@ async function loadOptions() {
 
         // Load email format nếu có dữ liệu
         if (data.emailformat.length === 2) {
-            document.querySelector("#email-prefix").value = data.emailformat[0].replace("@", ""); // Bỏ ký tự "@"
-            document.querySelector("#email-domain").value = data.emailformat[1].replace(".", ""); // Bỏ ký tự "."
+            document.querySelector("#email-prefix").value = data.emailformat[0];
+            document.querySelector("#email-domain").value = data.emailformat[1];
         }
     } catch (error) {
         console.error("Lỗi khi tải dữ liệu:", error);
@@ -80,7 +80,7 @@ async function saveChanges() {
 
         // Nếu người dùng không nhập gì, giữ nguyên dữ liệu cũ
         let emailformat = (emailPrefix || emailDomain) 
-            ? [`@${emailPrefix}`, `.${emailDomain}`] 
+            ? [`${emailPrefix}`, `${emailDomain}`] 
             : oldData.emailformat; // Giữ nguyên nếu không nhập gì
 
         let data = {

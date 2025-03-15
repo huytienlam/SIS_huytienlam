@@ -1,6 +1,63 @@
-const optionsFile = "./data/options.json";
-
 (function(global) {
+    async function getEmailFormat() {
+        try {
+            let baseURL = typeof window !== "undefined" ? "" : "http://localhost:3000"; // Nếu chạy trên backend, thêm host đầy đủ
+            let response = await fetch(baseURL + "/options"); 
+            let data = await response.json();
+            return data.emailformat || [];
+        } catch (error) {
+            console.error("Lỗi khi lấy emailformat:", error);
+            return [];
+        }
+    }
+
+    async function validateEmail(email) {
+        // Kiểm tra định dạng email cơ bản
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+            return "Email không hợp lệ.";
+        }
+    
+        // Lấy cấu hình email format
+        let emailFormat = await getEmailFormat();
+    
+        // Kiểm tra xem email format có hợp lệ không
+        if (!emailFormat || emailFormat.length !== 2) {
+            return "Không tìm thấy cấu hình emailformat.";
+        }
+    
+        const [expectedPrefix, expectedDomain] = emailFormat;
+        const [userPrefix, userDomain] = email.split("@");
+    
+        console.log("Expected Prefix:", expectedPrefix);
+        console.log("Expected Domain:", expectedDomain);
+        console.log("User Prefix:", userPrefix);
+        console.log("User Domain:", userDomain);
+    
+        if (!userDomain) return "Email không hợp lệ.";
+    
+        // Cắt domain thành hai phần: tên miền chính + phần mở rộng
+        const domainParts = userDomain.split(".");
+        const mainDomain = domainParts.slice(0, -1).join("."); // Tên miền chính
+        const domainExtension = domainParts.slice(-1)[0]; // Phần mở rộng (.com, .vn, etc.)
+    
+        console.log("Expected Prefix:", expectedPrefix);
+        console.log("Expected Domain:", expectedDomain);
+        console.log("User Main Domain:", mainDomain);
+        console.log("User Domain Extension:", domainExtension);
+    
+        // Kiểm tra xem mainDomain có giống expectedPrefix không
+        if (mainDomain !== expectedPrefix) {
+            return `Email phải có dạng: @${expectedPrefix}.${expectedDomain}`;
+        }
+    
+        // Kiểm tra xem domainExtension có giống expectedDomain không
+        if (domainExtension !== expectedDomain) {
+            return `Phần mở rộng domain phải là: ${expectedDomain}`;
+        }
+    
+        return ""; // Email hợp lệ
+    }
+
     function validateId(id, course) {
         if (!/^\d{8}$/.test(id)) {
             return "MSSV phải có 8 số.";
@@ -28,13 +85,6 @@ const optionsFile = "./data/options.json";
         }
         if (parseInt(course) - birthYear < 17) {
             return "Sinh viên phải ít nhất 17 tuổi tính từ thời điểm khóa đó.";
-        }
-        return "";
-    }
-
-    function validateEmail(email) {
-        if (email !== "" && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-            return "Email không hợp lệ.";
         }
         return "";
     }

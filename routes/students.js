@@ -4,7 +4,7 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const fs = require("fs");
 const csvParser = require("csv-parser");
-const logActivity = require("../middleware/logger"); // Import middleware logger
+const logActivity = require("../middleware/logger");
 const { validateEmail, validatePhone } = require("../scripts/validate");
 
 // Đường dẫn đến các file dữ liệu
@@ -35,12 +35,12 @@ function saveStudents(students) {
 // Hàm đọc danh sách các lựa chọn từ file JSON
 function getOptions() {
     try {
-        if (!fs.existsSync(optionsFile)) return { faculties: [], programs: [], statuses: [] };
+        if (!fs.existsSync(optionsFile)) return { faculties: [], programs: [], statuses: [], emailformat: [] };
         const data = fs.readFileSync(optionsFile, "utf-8");
         return JSON.parse(data);
     } catch (error) {
         console.error("Error reading options.json:", error);
-        return { faculties: [], programs: [], statuses: [] };
+        return { faculties: [], programs: [], statuses: [], emailformat: [] };
     }
 }
 
@@ -123,7 +123,7 @@ router.get("/update/:id", (req, res) => {
 });
 
 // POST: Cập nhật thông tin sinh viên (theo MSSV)
-router.post("/update/:id", (req, res) => {
+router.post("/update/:id", async (req, res) => {
     let students = getStudents();
     const index = students.findIndex(s => s.id === req.params.id);
     if (index === -1) {
@@ -132,21 +132,19 @@ router.post("/update/:id", (req, res) => {
     const student = students[index];
     const oldData = { ...student };
 
-    // Nếu trường nhập không trống, cập nhật giá trị mới. Nếu để trống, giữ nguyên.
     if (req.body.address && req.body.address.trim() !== "") {
         student.address = req.body.address.trim();
     }
     if (req.body.email && req.body.email.trim() !== "") {
         const email = req.body.email.trim();
-        // Kiểm tra định dạng email
-        if (validateEmail(email)) {
-            return res.status(400).send("Email không hợp lệ.");
+        let errorMessage = await validateEmail(email);
+        if (errorMessage) {
+            return res.status(400).send(errorMessage);
         }
         student.email = email;
     }
     if (req.body.phone && req.body.phone.trim() !== "") {
         const phone = req.body.phone.trim();
-        // Kiểm tra số điện thoại: 10 số, đầu số hợp lệ của VN
         if (validatePhone(phone)) {
             return res.status(400).send("Số điện thoại không hợp lệ.");
         }

@@ -8,8 +8,8 @@
     "course": "2022",
     "program": "Cử nhân",
     "address": "ssdjifsud",
-    "email": "lthuy22@clc.fitus.edu.vn",
-    "phone": "0703102330",
+    "email": "lthuy22@gmail.com",
+    "phone": "0739572452",
     "status": "Đang học"
   },
   {
@@ -21,7 +21,7 @@
     "course": "2022",
     "program": "Cử nhân",
     "address": "Fdfdsd",
-    "email": "huytienlam@gmail.com",
+    "email": "sas@gmail.com",
     "phone": "0739572452",
     "status": "Đang học"
   },
@@ -60,7 +60,7 @@
     "course": "2022",
     "program": "Cử nhân",
     "address": "Fdfdsd",
-    "email": "lthuy22@clc.fitus.edu.vn",
+    "email": "sas@gmail.com",
     "phone": "0739572452",
     "status": "Đang học"
   },
@@ -177,8 +177,8 @@
     "course": "2022",
     "program": "Cử nhân",
     "address": "Fdfdsd",
-    "email": "",
-    "phone": "0739572452",
+    "email": "22127151@student.hcmus.edu.vn",
+    "phone": "0703102330",
     "status": "Đang học"
   },
   {
@@ -205,6 +205,19 @@
     "address": "Fdfdsd",
     "email": "",
     "phone": "",
+    "status": "Đang học"
+  },
+  {
+    "id": "25127555",
+    "name": "Boxing Demo",
+    "dob": "2000-03-20",
+    "gender": "Nam",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2025",
+    "program": "Kỹ sư",
+    "address": "fdgdfgdg",
+    "email": "lthuy22@gmail.com",
+    "phone": "0985456335",
     "status": "Đang học"
   }
 ]
