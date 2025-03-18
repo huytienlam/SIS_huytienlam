@@ -3,12 +3,13 @@
 - Sinh viên: LÂM TIẾN HUY
 - MSSV: 22127151
 - Môn: THIẾT KẾ PHẦN MỀM - 22KTPM3
-- Version: 4.0.0
+- Version: 4.1.0
 - GitHub Repository: https://github.com/huytienlam/SIS_huytienlam
 
 
 ## 1. CẤU TRÚC SOURCE CODE
 - Folder C++ (old) hiện chỉ update tới Version 1.0.0, các version sau sẽ sử dụng web.
+- Version 4.1.0 ghi nhận sự thay đổi lớn về cách bố trí source code.
 
 ```
 /SIS_huytienlam
@@ -26,29 +27,20 @@
 │   │── logger.js *Tạo activity log*
 │── /logs
 │   │── activity.logs *Lưu trữ lịch sử log*
-│── /public
-│   │── styles.css
-│   │── add-student.css
-│   │── home.css
-│   │── import-export.css
-│   │── manage-options.css
-│   │── update-student.css
-│   │── hcmus.svg *Logo HCMUS*
 │── /routes
 │   │── students.js *Routing cho các tính năng quản lý sinh viên*
-│── /sample
-│   │── sample.json *File JSON mẫu dữ liệu import*
-│   │── sample.csv *File CSV mẫu dữ liệu import*
-│── /screenshots *Screenshot các trang của web*
+│── /controllers
+│   │── studentsController.js *Controller cho sinh viên*
+│   │── importExportController.js *Controller cho file JSON/CSV*
+│── /services
+│   │── studentsService.js *Hàm hỗ trợ cho sinh viên*
+│   │── optionService.js *Hàm hỗ trợ cho cài đặt dữ liệu*
+│── /utils
+│   │── validate.js *Kiểm tra điều kiện*
 │── /scripts
 │   │── add-student.js
 │   │── manage-options.js
 │   │── update-student.js
-│   │── validate.js
-│── /tests
-│   │── add-student.test.js
-│   │── search.test.js
-│── /uploads *Chứa các file CSV, JSON được import*
 │── /views
 │   │── add-student.hbs *Trang thêm sinh viên*
 │   │── home.hbs *Trang chủ, display toàn bộ sinh viên*
@@ -60,6 +52,27 @@
 │   │   │── header.hbs
 │   │── /layouts
 │       │── layout.hbs *Layout chính render*
+│── /sample
+│   │── sample.json *File JSON mẫu dữ liệu import*
+│   │── sample.csv *File CSV mẫu dữ liệu import*
+│── /screenshots
+│   │── Add Students.png *Trang thêm sinh viên*
+│   │── Change Options.png *Trang cài đặt dữ liệu*
+│   │── Import Export.png *Trang import/export file CSV/JSON*
+│   │── Main View.png *Trang chủ*
+│   │── Update Students.png *Trang cập nhật sinh viên*
+│── /tests
+│   │── add-student.test.js
+│   │── search.test.js
+│── /uploads *Chứa các file CSV, JSON được import*
+│── /public
+│   │── styles.css
+│   │── add-student.css
+│   │── home.css
+│   │── import-export.css
+│   │── manage-options.css
+│   │── update-student.css
+│   │── hcmus.svg *Logo HCMUS*
 │── app.js
 │── package-lock.json
 │── package.json
@@ -87,8 +100,7 @@
 - Só điện thoại phải đủ 10 chữ số và đầu số phải chuẩn của Việt Nam.
 ### Import và Export có 2 định dạng JSON và CSV
 - Khi import, lưu ý rằng định dạng cả 2 file phải tương tự sample.csv và sample.json trong thư mục public.
-### Xuất giấy xác nhận sinh viên
-- Hỗ trợ 2 định dạng: Markdown và PDF.
+- Không được thiếu các vùng dữ liệu, nếu không sẽ nguy cơ trả ra lỗi.
 ### Cài đặt về mặt dữ liệu và hệ thống
 - Tình trạng sinh viên chỉ có thể thay đổi theo một số quy tắc nhất định.
 - Chỉ được phép xóa sinh viên có creation date/time trong khoảng thời gian nhất định.
@@ -111,7 +123,7 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 - Nhập tên hoặc MSSV và Khoa của sinh viên cần tìm, nếu khớp sẽ hiện đầy đủ thông tin của sinh viên đó.
 - Có thể bỏ trống 1 trong 2 ô còn lại.
 
-### CẬP NHẬT SINH VIÊN
+*CẬP NHẬT SINH VIÊN*
 ![Update Student](/screenshots/Update%20Students.png)
 - Khi chọn nút Sửa kế bên sinh viên đó trên trang *HOME* thì sẽ hiện ra trang này.
 - Thay đổi Địa chỉ, Email, Số điện thoại, hoặc Tình trạng sinh viên nếu cần và chọn Cập nhật.
@@ -123,7 +135,7 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 - Gõ toàn bộ thông tin trong form và nhấn Add Student.
 - Dựa theo quy chuẩn, nếu sai sẽ ngăn việc submit form, nếu đúng thì sinh viên sẽ được thêm vào database.
 
-### THAY ĐỔI LỰA CHỌN (Khoa, Chương trình, và Trạng thái)
+### CÀI ĐẶT DỮ LIỆU (Khoa, Chương trình, và Trạng thái)
 ![Change Options](/screenshots/Change%20Options.png)
 - Trên Header, chọn Manage.
 - Thêm, xoá, hoặc sửa các tuỳ chọn của Khoa, Chương trình, và Trạng thái.
@@ -131,6 +143,7 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 
 ### IMPORT VÀ EXPORT FILE (JSON và CSV)
 ![Import & Export](/screenshots/Import%20Export.png)
+
 *IMPORT*
 - Chọn tệp ngay vị trí CSV, bấm Tải lên CSV.
 - (HOẶC) chọn tệp ngay vị trí JSON, bấm Tải lên JSON.
@@ -139,6 +152,9 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 *EXPORT*
 - Bấm Tải về CSV để tải database sinh viên dạng CSV.
 - Bấm Tải về JSON để tải database sinh viên dạng JSON.
+
+### XUẤT GIẤY XÁC NHẬN SINH VIÊN
+- Hỗ trợ 2 định dạng: HTML và MD.
 
 ### ACTIVITY LOG
 - Xem activity log trong /middleware/logs/activity.log

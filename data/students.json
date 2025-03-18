@@ -1,14 +1,27 @@
 [
   {
-    "id": "22127153",
+    "id": "22127151",
     "name": "Lâm Tiến Huy",
-    "dob": "2002-02-14",
-    "gender": "Male",
+    "dob": "2001-02-28",
+    "gender": "Nam",
     "faculty": "Khoa Công nghệ thông tin",
     "course": "2022",
     "program": "Cử nhân",
     "address": "Fdfdsd",
-    "email": "sas@gmail.com",
+    "email": "hello@gmail.com",
+    "phone": "0803322222",
+    "status": "Đã tốt nghiệp"
+  },
+  {
+    "id": "22127153",
+    "name": "Lâm Tiến",
+    "dob": "2002-02-14",
+    "gender": "Nam",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2022",
+    "program": "Cử nhân",
+    "address": "Fdfdsd",
+    "email": "huytienlam@gmail.com",
     "phone": "0739572452",
     "status": "Đang học"
   },
@@ -24,19 +37,6 @@
     "email": "hello@gmail.com",
     "phone": "0703957245",
     "status": "Đang học"
-  },
-  {
-    "id": "22127151",
-    "name": "Lâm Tiến Huy",
-    "dob": "2001-02-28",
-    "gender": "Nam",
-    "faculty": "Khoa Công nghệ thông tin",
-    "course": "2022",
-    "program": "Cử nhân",
-    "address": "Fdfdsd",
-    "email": "hello@gmail.com",
-    "phone": "0803322222",
-    "status": "Đã tốt nghiệp"
   },
   {
     "id": "22127157",
@@ -75,6 +75,58 @@
     "address": "Fdfdsd",
     "email": "hello@gmail.com",
     "phone": "0739572452",
+    "status": "Đang học"
+  },
+  {
+    "id": "22127944",
+    "name": "Haha Haha",
+    "dob": "2003-02-01",
+    "gender": "Nam",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2022",
+    "program": "Cử nhân",
+    "address": "Fdfdsd",
+    "email": "sas@clc.fitus.edu.vn",
+    "phone": "0763233444",
+    "status": "Đang học"
+  },
+  {
+    "id": "22127333",
+    "name": "Haha Haha",
+    "dob": "2003-02-01",
+    "gender": "Nam",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2022",
+    "program": "Cử nhân",
+    "address": "Fdfdsd",
+    "email": "lthuy22@clc.fitus.edu.vn",
+    "phone": "0739572452",
+    "status": "Đang học"
+  },
+  {
+    "id": "22127159",
+    "name": "Hà Thị Thu",
+    "dob": "2000-02-21",
+    "gender": "Nữ",
+    "faculty": "Khoa Tiếng Anh thương mại",
+    "course": "2022",
+    "program": "Cử nhân",
+    "address": "ssdjifsud",
+    "email": "lthuy22@clc.fitus.edu.vn",
+    "phone": "0739572452",
+    "status": "Đang học"
+  },
+  {
+    "id": "23453354",
+    "name": "Hello Hello",
+    "dob": "2001-03-23",
+    "gender": "Nam",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2023",
+    "program": "Cử nhân",
+    "address": "ssdjifsud",
+    "email": "sas@clc.fitus.edu.vn",
+    "phone": "0722413433",
     "status": "Đang học"
   }
 ]
