@@ -105,3 +105,17 @@
 [2025-03-18T16:29:24.042Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["clc.fitus.edu","vn"]}
 [2025-03-18T16:46:54.735Z] Cập nhật sinh viên: {"id":"22127944","oldData":{"id":"22127944","name":"Haha Haha","dob":"2003-02-01","gender":"Nam","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"lthuy22@clc.fitus.edu.vn","phone":"0739572452","status":"Đang học"},"newData":{"id":"22127944","name":"Haha Haha","dob":"2003-02-01","gender":"Nam","faculty":"Khoa Công nghệ thông tin","course":"2022","program":"Cử nhân","address":"Fdfdsd","email":"sas@clc.fitus.edu.vn","phone":"0763233444","status":"Đang học"}}
 [2025-03-18T16:47:52.377Z] Thêm sinh viên: {"id":"23453354","name":"Hello Hello","dob":"2001-03-23","gender":"Nam","faculty":"Khoa Công nghệ thông tin","course":"2023","program":"Cử nhân","address":"ssdjifsud","email":"sas@clc.fitus.edu.vn","phone":"0722413433","status":"Đang học"}
+[2025-03-19T15:56:19.363Z] IMPORT_CSV: {"importedCount":0}
+[2025-03-19T15:56:31.266Z] Xóa sinh viên: {"id":"22127153","name":"Lâm Tiến"}
+[2025-03-19T15:56:32.192Z] Xóa sinh viên: {"id":"22127154","name":"Lâm Tiến Huy"}
+[2025-03-19T15:56:37.294Z] IMPORT_JSON: {"importedCount":0}
+[2025-03-19T15:56:51.495Z] Xóa sinh viên: {"id":"22127333","name":"Haha Haha"}
+[2025-03-19T15:56:57.538Z] IMPORT_JSON: {"importedCount":1}
+[2025-03-19T15:57:33.743Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-03-19T15:58:29.631Z] Tìm kiếm sinh viên: {"query":"1","facultyFilter":""}
+[2025-03-19T16:11:29.152Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ","gg"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["clc.fitus.edu","vn"]}
+[2025-03-19T16:12:31.032Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ","gg","ff"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["clc.fitus.edu","vn"]}
+[2025-03-19T16:15:35.851Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ","gg"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["clc.fitus.edu","vn"]}
+[2025-03-19T16:15:39.343Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["clc.fitus.edu","vn"]}
+[2025-03-19T16:15:51.064Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["gmail","com"]}
+[2025-03-19T16:51:13.682Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}

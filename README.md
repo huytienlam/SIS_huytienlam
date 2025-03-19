@@ -3,12 +3,13 @@
 - Sinh viên: LÂM TIẾN HUY
 - MSSV: 22127151
 - Môn: THIẾT KẾ PHẦN MỀM - 22KTPM3
-- Version: 4.1.0
+- Version: 4.2.0
 - GitHub Repository: https://github.com/huytienlam/SIS_huytienlam
 
 
 ## 1. CẤU TRÚC SOURCE CODE
-- Folder C++ (old) hiện chỉ update tới Version 1.0.0, các version sau sẽ sử dụng web.
+- Version 1.0.0 hỗ trợ bằng Folder C++ (old), các version sau sẽ sử dụng web.
+- Version 2.0.0 là version đầu tiên chuyển qua dạng website Handlebars.
 - Version 4.1.0 ghi nhận sự thay đổi lớn về cách bố trí source code.
 
 ```
@@ -32,11 +33,14 @@
 │── /controllers
 │   │── studentsController.js *Controller cho sinh viên*
 │   │── importExportController.js *Controller cho file JSON/CSV*
+│   │── optionsRoutes.js *Controller cho cài đặt dữ liệu*
+│   │── confirmationsRoutes.js *Controller cho giấy xác nhận*
 │── /services
 │   │── studentsService.js *Hàm hỗ trợ cho sinh viên*
 │   │── optionService.js *Hàm hỗ trợ cho cài đặt dữ liệu*
 │── /utils
 │   │── validate.js *Kiểm tra điều kiện*
+│   │── certificateGenerator.js *Tạo giấy xác nhận sinh viên*
 │── /scripts
 │   │── add-student.js
 │   │── manage-options.js
@@ -47,6 +51,7 @@
 │   │── import-export.hbs *Trang import và export dữ liệu từ JSON/CSV*
 │   │── manage-options.hbs *Trang thay đổi tuỳ chọn cho Khoa, Chương trình, và Trạng thái*
 │   │── update-student.hbs *Trang cập nhật dữ liệu sinh viên*
+│   │── confirmations.hbs *Trang xuất giấy xác nhận sinh viên*
 │   │── /partials
 │   │   │── footer.hbs
 │   │   │── header.hbs
@@ -116,14 +121,14 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 - Trong mỗi sinh viên có phần Xoá và Sửa.
 - Ô tìm kiếm theo MSSV hoặc Tên và Khoa.
 
-*XOÁ SINH VIÊN*
+***XOÁ SINH VIÊN***
 - Bấm nút xoá kế bên sinh viên đó.
 
-*TÌM KIẾM SINH VIÊN*
+***TÌM KIẾM SINH VIÊN***
 - Nhập tên hoặc MSSV và Khoa của sinh viên cần tìm, nếu khớp sẽ hiện đầy đủ thông tin của sinh viên đó.
 - Có thể bỏ trống 1 trong 2 ô còn lại.
 
-*CẬP NHẬT SINH VIÊN*
+***CẬP NHẬT SINH VIÊN***
 ![Update Student](/screenshots/Update%20Students.png)
 - Khi chọn nút Sửa kế bên sinh viên đó trên trang *HOME* thì sẽ hiện ra trang này.
 - Thay đổi Địa chỉ, Email, Số điện thoại, hoặc Tình trạng sinh viên nếu cần và chọn Cập nhật.
@@ -144,17 +149,20 @@ Chương trình sẽ hiển thị các tùy chọn cho phép quản lý danh sá
 ### IMPORT VÀ EXPORT FILE (JSON và CSV)
 ![Import & Export](/screenshots/Import%20Export.png)
 
-*IMPORT*
+***IMPORT***
 - Chọn tệp ngay vị trí CSV, bấm Tải lên CSV.
 - (HOẶC) chọn tệp ngay vị trí JSON, bấm Tải lên JSON.
 - Nếu hợp lệ, thông tin sẽ được cập nhật vào database.
 
-*EXPORT*
+***EXPORT***
 - Bấm Tải về CSV để tải database sinh viên dạng CSV.
 - Bấm Tải về JSON để tải database sinh viên dạng JSON.
 
 ### XUẤT GIẤY XÁC NHẬN SINH VIÊN
-- Hỗ trợ 2 định dạng: HTML và MD.
+![Confirmations](/screenshots/Confirmations.png)
+- Tìm sinh viên cần xuất giấy xác nhận.
+- Hỗ trợ 2 định dạng: PDF và DOCX.
+- Bấm vào nút tương ứng với định dạng cần tải để tải giấy xác nhận về.
 
 ### ACTIVITY LOG
-- Xem activity log trong /middleware/logs/activity.log
+- Xem activity log trong /logs/activity.log.

@@ -37,8 +37,17 @@ app.use((req, res, next) => {
 });
 
 // Load routes
-const studentRoutes = require("./routes/students");
+const studentRoutes = require("./routes/studentsRoutes");
 app.use("/", studentRoutes);
+
+const importExportRoutes = require("./routes/importExportRoutes");
+app.use("/import-export", importExportRoutes);
+
+const optionsRoutes = require("./routes/optionsRoutes");
+app.use("/manage-options", optionsRoutes);
+
+const confirmationsRoutes = require("./routes/confirmationsRoutes");
+app.use("/confirmations", confirmationsRoutes);
 
 // Trang chủ
 app.get("/", (req, res) => {

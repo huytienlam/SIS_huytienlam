@@ -1,11 +1,11 @@
 const fs = require("fs");
 const path = require("path");
-const optionsFile = path.join(__dirname, "../data/options.json");
 const { getStudents, saveStudents } = require("../services/studentsService");
-const { getOptions, saveOptions } = require("../services/optionService");
+const { getOptions } = require("../services/optionsService");
 const logActivity = require("../middleware/logger");
 const { validateEmail, validatePhone } = require("../utils/validate");
 
+// Lấy danh sách sinh viên
 exports.getStudentsList = (req, res) => {
     const students = getStudents();
     const options = getOptions();
@@ -16,10 +16,12 @@ exports.getStudentsList = (req, res) => {
     });
 };
 
+// Hiển thị form thêm sinh viên.
 exports.getAddStudentForm = (req, res) => {
     res.render("add-student");
 };
 
+// Thêm sinh viên
 exports.addStudent = (req, res) => {
     const students = getStudents();
     if (students.some(student => student.id === req.body.id)) {
@@ -46,12 +48,14 @@ exports.addStudent = (req, res) => {
     res.redirect("/");
 };
 
+// Kiểm tra xem MSSV đã tồn tại hay chưa.
 exports.checkStudentId = (req, res) => {
     const students = getStudents();
     const exists = students.some(student => student.id === req.query.id);
     res.json({ exists });
 };
 
+// Xóa sinh viên
 exports.deleteStudent = (req, res) => {
     let students = getStudents();
     const studentId = req.params.id.trim();
@@ -67,6 +71,7 @@ exports.deleteStudent = (req, res) => {
     res.redirect("/");
 };
 
+// Hiển thị form cập nhật
 exports.getUpdateStudentForm = (req, res) => {
     const students = getStudents();
     const student = students.find(s => s.id === req.params.id);
@@ -76,6 +81,7 @@ exports.getUpdateStudentForm = (req, res) => {
     res.render("update-student", { student });
 };
 
+// Cập nhật sinh viên
 exports.updateStudent = async (req, res) => {
     let students = getStudents();
     const index = students.findIndex(s => s.id === req.params.id);
@@ -112,6 +118,7 @@ exports.updateStudent = async (req, res) => {
     res.redirect("/");
 };
 
+// Tìm kiếm theo MSSV/Họ tên và Khoa
 exports.searchStudents = (req, res) => {
     const query = req.query.query ? req.query.query.toLowerCase() : "";
     const facultyFilter = req.query.faculty || "";
@@ -144,39 +151,4 @@ exports.searchStudents = (req, res) => {
         faculties: options.faculties, 
         selectedFaculty: facultyFilter 
     });
-};
-
-exports.getOptions = (req, res) => {
-    res.json(getOptions());
-};
-
-exports.updateOptions = (req, res) => {
-    try {
-        const { faculties, programs, statuses, emailformat } = req.body;
-
-        // Đọc dữ liệu cũ
-        const oldData = JSON.parse(fs.readFileSync(optionsFile, "utf-8"));
-
-        // Tạo dữ liệu mới, nếu `emailformat` không được gửi lên, giữ nguyên dữ liệu cũ
-        const newOptions = {
-            faculties,
-            programs,
-            statuses,
-            emailformat: emailformat !== undefined ? emailformat : oldData.emailformat,
-        };
-
-        // Ghi vào file JSON
-        fs.writeFileSync(optionsFile, JSON.stringify(newOptions, null, 2), "utf-8");
-
-        // Ghi log và phản hồi
-        logActivity("Cập nhật danh sách lựa chọn", newOptions);
-        res.json({ success: true, message: "Cập nhật danh sách thành công!" });
-    } catch (error) {
-        console.error("Error updating options.json:", error);
-        res.status(500).json({ success: false, message: "Lỗi cập nhật dữ liệu." });
-    }
-};
-
-exports.manageOptionsPage = (req, res) => {
-    res.render("manage-options");
 };

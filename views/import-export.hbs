@@ -5,7 +5,7 @@
         <h2>Nhập</h2>
         <div class="form-container">
             <div class="form-wrapper">
-                <form class="import-export-form" action="/import-csv" method="POST" enctype="multipart/form-data">
+                <form class="import-export-form" action="/import-export/import-csv" method="POST" enctype="multipart/form-data">
                 <label for="csvFile" class="custom-file-upload">Chọn file CSV</label>
                 <input type="file" id="csvFile" name="csvFile" accept=".csv" required>
                 <p class="import-export-text" id="csv-file-name">Chưa chọn file CSV.</p>
@@ -14,7 +14,7 @@
             </div>
             
             <div class="form-wrapper">
-                <form class="import-export-form" action="/import-json" method="POST" enctype="multipart/form-data">
+                <form class="import-export-form" action="/import-export/import-json" method="POST" enctype="multipart/form-data">
                     <label for="jsonFile" class="custom-file-upload">Chọn file JSON</label>
                     <input type="file" id="jsonFile" name="jsonFile" accept=".json" required>
                     <p class="import-export-text" id="json-file-name">Chưa chọn file JSON.</p>
@@ -27,10 +27,10 @@
     <div class="import-export-form-container">
         <h2>Xuất</h2>
         <div class="export-container">
-            <a style="min-width: 50%" href="/export-csv">
+            <a style="min-width: 50%" href="/import-export/export-csv">
                 <button class="upload-button-2">Tải về CSV</button>
             </a>
-            <a style="min-width: 50%" href="/export-json">
+            <a style="min-width: 50%" href="/import-export/export-json">
                 <button class="upload-button-2">Tải về JSON</button>
             </a>
         </div>

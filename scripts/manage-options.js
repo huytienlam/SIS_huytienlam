@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 // Hàm tải danh sách khoa, chương trình, trạng thái và format email từ server
 async function loadOptions() {
     try {
-        let response = await fetch("/options"); // Gửi request GET để lấy dữ liệu từ server
+        let response = await fetch("/manage-options/options"); // Gửi request GET để lấy dữ liệu từ server
         let data = await response.json(); // Chuyển response thành JSON
 
         // Hàm render danh sách vào giao diện
@@ -75,7 +75,7 @@ async function saveChanges() {
 
     try {
         // Tải dữ liệu cũ từ server
-        let response = await fetch("/options");
+        let response = await fetch("/manage-options/options");
         let oldData = await response.json();
 
         // Nếu người dùng không nhập gì, giữ nguyên dữ liệu cũ
@@ -92,7 +92,7 @@ async function saveChanges() {
 
         console.log("Dữ liệu gửi lên:", data);
 
-        let updateResponse = await fetch("/update-options", {
+        let updateResponse = await fetch("/manage-options/update-options", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),

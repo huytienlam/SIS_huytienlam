@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Xuất giấy xác nhận</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Xuất giấy xác nhận</h1>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>MSSV</th>
+                    <th>Họ và Tên</th>
+                    <th>Chọn định dạng xuất</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each students}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.name}}</td>
+                    <td>
+                        <div class="update-delete-container">
+                            <a href="/confirmations/pdf/{{this.id}}">
+                                <button class="update-delete-button">Xuất PDF</button>
+                            </a>
+                            <a href="/confirmations/docx/{{this.id}}">
+                                <button class="update-delete-button">Xuất DOCX</button>
+                            </a>
+                        </div>
+                        
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</body>
