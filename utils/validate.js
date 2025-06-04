@@ -1,7 +1,7 @@
 (function(global) {
     async function getEmailFormat() {
         try {
-            let baseURL = typeof window !== "undefined" ? "" : "http://localhost:3000"; // Nếu chạy trên backend, thêm host đầy đủ
+            let baseURL = typeof window !== "undefined" ? "" : "http://localhost:3000/manage-options"; // Nếu chạy trên backend, thêm host đầy đủ
             let response = await fetch(baseURL + "/options"); 
             let data = await response.json();
             return data.emailformat || [];

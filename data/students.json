@@ -91,15 +91,28 @@
     "status": "Đang học"
   },
   {
-    "id": "22127333",
-    "name": "Haha Haha",
-    "dob": "2003-02-01",
+    "id": "22127154",
+    "name": "Lâm Tiến Huy",
+    "dob": "2002-02-14",
     "gender": "Nam",
     "faculty": "Khoa Công nghệ thông tin",
     "course": "2022",
     "program": "Cử nhân",
     "address": "Fdfdsd",
-    "email": "lthuy22@clc.fitus.edu.vn",
+    "email": "hello@gmail.com",
+    "phone": "0703957245",
+    "status": "Đang học"
+  },
+  {
+    "id": "22127153",
+    "name": "Lâm Tiến",
+    "dob": "2002-02-14",
+    "gender": "Nam",
+    "faculty": "Khoa Công nghệ thông tin",
+    "course": "2022",
+    "program": "Cử nhân",
+    "address": "Fdfdsd",
+    "email": "huytienlam@gmail.com",
     "phone": "0739572452",
     "status": "Đang học"
   }

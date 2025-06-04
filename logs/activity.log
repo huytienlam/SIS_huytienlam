@@ -119,3 +119,15 @@
 [2025-03-19T16:15:39.343Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["clc.fitus.edu","vn"]}
 [2025-03-19T16:15:51.064Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["gmail","com"]}
 [2025-03-19T16:51:13.682Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-06-04T09:55:49.357Z] IMPORT_CSV: {"importedCount":0}
+[2025-06-04T09:56:42.554Z] EXPORT_CSV: {"exportedCount":8}
+[2025-06-04T10:29:44.758Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["gmailj","com"]}
+[2025-06-04T10:29:52.640Z] Cập nhật danh sách lựa chọn: {"faculties":["Khoa Công nghệ thông tin","Khoa Luật","Khoa Tiếng Anh thương mại","Khoa Tiếng Nhật","Khoa Tiếng Pháp"],"programs":["Cử nhân","Kỹ sư","Thạc sĩ","Tiến sĩ"],"statuses":["Đang học","Đã tốt nghiệp","Đã thôi học","Tạm dừng học"],"emailformat":["gmail","com"]}
+[2025-06-04T10:34:30.541Z] IMPORT_CSV: {"importedCount":2}
+[2025-06-04T10:34:33.996Z] Xóa sinh viên: {"id":"22127154","name":"Lâm Tiến Huy"}
+[2025-06-04T10:34:34.947Z] Xóa sinh viên: {"id":"22127153","name":"Lâm Tiến"}
+[2025-06-04T10:34:35.753Z] Xóa sinh viên: {"id":"22127333","name":"Haha Haha"}
+[2025-06-04T10:34:39.354Z] IMPORT_CSV: {"importedCount":2}
+[2025-06-04T10:34:42.714Z] Xóa sinh viên: {"id":"22127153","name":"Lâm Tiến"}
+[2025-06-04T10:34:43.325Z] Xóa sinh viên: {"id":"22127154","name":"Lâm Tiến Huy"}
+[2025-06-04T10:34:47.946Z] IMPORT_JSON: {"importedCount":2}
