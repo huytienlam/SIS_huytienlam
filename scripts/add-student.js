@@ -1,6 +1,6 @@
 async function loadOptions() {
     try {
-        let response = await fetch("/options");
+        let response = await fetch("/manage-options/options");
         let data = await response.json();
 
         function populateSelect(id, items) {
