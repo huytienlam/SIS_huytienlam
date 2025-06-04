@@ -16,6 +16,7 @@
                     <option value="{{this}}" {{#if (eq this ../selectedFaculty)}}selected{{/if}}>{{this}}</option>
                 {{/each}}
             </select>
+            <input type="hidden" name="source" value="home">
             <button class="search-button" type="submit">Tìm kiếm</button>
         </form>
 

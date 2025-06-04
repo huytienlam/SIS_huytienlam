@@ -122,10 +122,15 @@ exports.updateStudent = async (req, res) => {
 exports.searchStudents = (req, res) => {
     const query = req.query.query ? req.query.query.toLowerCase() : "";
     const facultyFilter = req.query.faculty || "";
+    const source = req.query.source || "";
 
-    // Redirect to `/` if both filters are empty
+    // Redirect về trang phù hợp nếu không có filter nào
     if (!query && !facultyFilter) {
-        return res.redirect("/");
+        if (source === "confirmations") {
+            return res.redirect("/confirmations");
+        } else {
+            return res.redirect("/");
+        }
     }
 
     const students = getStudents();
@@ -146,9 +151,15 @@ exports.searchStudents = (req, res) => {
     
     const options = getOptions();
     logActivity("Tìm kiếm sinh viên", { query, facultyFilter });
-    res.render("home", { 
+
+    // Chọn view để render dựa trên source (mặc định là home)
+    const view = source === "confirmations" ? "confirmations" : "home";
+    
+    res.render(view, { 
         students: filteredStudents, 
         faculties: options.faculties, 
-        selectedFaculty: facultyFilter 
+        selectedFaculty: facultyFilter,
+        query,
+        source
     });
 };

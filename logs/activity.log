@@ -131,3 +131,62 @@
 [2025-06-04T10:34:42.714Z] Xóa sinh viên: {"id":"22127153","name":"Lâm Tiến"}
 [2025-06-04T10:34:43.325Z] Xóa sinh viên: {"id":"22127154","name":"Lâm Tiến Huy"}
 [2025-06-04T10:34:47.946Z] IMPORT_JSON: {"importedCount":2}
+[2025-06-04T10:37:42.804Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T10:37:44.954Z] Tìm kiếm sinh viên: {"query":"haha","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T10:37:47.518Z] Tìm kiếm sinh viên: {"query":"haha","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T10:40:18.235Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-06-04T10:43:30.377Z] Tìm kiếm sinh viên: {"query":"haha","facultyFilter":""}
+[2025-06-04T10:45:28.476Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-06-04T10:45:32.355Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T10:45:34.236Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Nhật"}
+[2025-06-04T10:45:35.681Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-06-04T10:45:38.305Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T10:45:41.399Z] Tìm kiếm sinh viên: {"query":"h","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T10:45:45.105Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-06-04T10:45:49.101Z] Tìm kiếm sinh viên: {"query":"haha","facultyFilter":""}
+[2025-06-04T10:45:54.764Z] Tìm kiếm sinh viên: {"query":"haha","facultyFilter":""}
+[2025-06-04T10:45:56.995Z] Tìm kiếm sinh viên: {"query":"haha","facultyFilter":""}
+[2025-06-04T10:46:04.486Z] Tìm kiếm sinh viên: {"query":"he","facultyFilter":""}
+[2025-06-04T10:46:06.638Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T10:46:08.838Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T10:46:21.157Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-06-04T10:46:23.967Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T10:48:01.060Z] Tìm kiếm sinh viên: {"query":"1","facultyFilter":""}
+[2025-06-04T10:48:03.525Z] Tìm kiếm sinh viên: {"query":"1","facultyFilter":""}
+[2025-06-04T11:00:42.501Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:00:44.234Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-06-04T11:00:47.085Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-06-04T11:00:49.663Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-06-04T11:00:52.589Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-06-04T11:01:30.487Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:01:31.895Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:01:32.391Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:01:35.546Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:01:37.561Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-06-04T11:01:39.006Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:01:41.542Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:01:42.194Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:03:16.702Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:03:17.107Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:03:17.587Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:03:19.320Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-06-04T11:03:19.696Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-06-04T11:03:20.259Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":""}
+[2025-06-04T11:07:23.306Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-06-04T11:07:51.681Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-06-04T11:09:41.479Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-06-04T11:09:42.952Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-06-04T11:09:44.693Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:09:46.549Z] Tìm kiếm sinh viên: {"query":"22127000","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:09:48.422Z] Tìm kiếm sinh viên: {"query":"22","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:09:50.312Z] Tìm kiếm sinh viên: {"query":"21","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:09:51.935Z] Tìm kiếm sinh viên: {"query":"23","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:09:58.406Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:09:59.111Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:09:59.264Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:09:59.680Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:09:59.814Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}
+[2025-06-04T11:10:06.923Z] Tìm kiếm sinh viên: {"query":"22127151","facultyFilter":""}
+[2025-06-04T11:10:08.090Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Công nghệ thông tin"}
+[2025-06-04T11:10:09.250Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Luật"}
+[2025-06-04T11:10:10.601Z] Tìm kiếm sinh viên: {"query":"","facultyFilter":"Khoa Tiếng Anh thương mại"}

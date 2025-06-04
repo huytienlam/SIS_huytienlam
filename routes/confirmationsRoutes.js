@@ -3,6 +3,7 @@ const path = require("path");
 const router = express.Router();
 const { generatePDF, generateDOCX } = require("../utils/certificateGenerator");
 const { getStudents } = require("../services/studentsService");
+const { getOptions } = require("../services/optionsService");
 
 // Hàm lấy sinh viên theo MSSV
 function getStudentById(id) {
@@ -13,7 +14,13 @@ function getStudentById(id) {
 // Trang danh sách xác nhận
 router.get("/", (req, res) => {
     const students = getStudents();
-    res.render("confirmations", { students });
+    const options = getOptions();
+
+    res.render("confirmations", {
+        students,
+        faculties: options.faculties,
+        selectedFaculty: ""
+    });
 });
 
 // Xuất giấy xác nhận dạng PDF

@@ -9,11 +9,24 @@
     <div class="container">
         <h1>Xuất giấy xác nhận</h1>
 
-        <table border="1">
+        <form class="search-form" action="/search" method="get">
+            <input class="input-default" type="text" name="query" placeholder="Nhập MSSV hoặc Họ Tên">
+            <select class="input-default" name="faculty">
+                <option value="">-- Chọn Khoa --</option>
+                {{#each faculties}}
+                    <option value="{{this}}" {{#if (eq this ../selectedFaculty)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
+            </select>
+            <input type="hidden" name="source" value="confirmations">
+            <button class="search-button" type="submit">Tìm kiếm</button>
+        </form>
+
+        <table border="1" class="confirmation-table">
             <thead>
                 <tr>
                     <th>MSSV</th>
                     <th>Họ và Tên</th>
+                    <th>Khoa</th>
                     <th>Chọn định dạng xuất</th>
                 </tr>
             </thead>
@@ -22,6 +35,7 @@
                 <tr>
                     <td>{{this.id}}</td>
                     <td>{{this.name}}</td>
+                    <td>{{this.faculty}}</td>
                     <td>
                         <div class="update-delete-container">
                             <a href="/confirmations/pdf/{{this.id}}">
@@ -39,3 +53,9 @@
         </table>
     </div>
 </body>
+
+<style>
+    .confirmation-table {
+        width: 65%;
+    }
+</style>
